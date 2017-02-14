@@ -1,0 +1,6 @@
+- name: Raspberry Pi camera module
+  img: camera
+- name: Raspberry Pi touch screen
+  img: breadboard
+- name: 2 x buttons
+  img: tactile-push-button
