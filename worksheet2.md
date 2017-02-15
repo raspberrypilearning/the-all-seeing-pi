@@ -22,14 +22,13 @@ In this resource you will make a tweeting touch screen photo booth using a Raspb
 
 1. Click on `File` > `Save` and save your file into the `allseeingpi` folder you just created, with the filename `allseeingpi.py`.
 
-1. We will need the `picamera` and the `gpiozero` libraries. At the start of your Python file add two import statements:
+1. We will need the `gpiozero` library. At the start of your Python file add an import statement:
 
 ```python
-from picamera import PiCamera
 from gpiozero import Button
 ```
 
-1. Next we will set up the buttons. On the [previous worksheet](worksheet.md) we wired our buttons to pins 23 and 25. Let's go ahead and set both buttons up, even though we will not use the `next_overlay_btn` until later on.
+1. Next we will set up the buttons. On the [previous worksheet](worksheet.md) we wired our buttons to pins 23 and 25. Let's go ahead and set both buttons up.
 
   ```python
   next_overlay_btn = Button(23)
@@ -43,7 +42,7 @@ from gpiozero import Button
     take_pic_btn.when_pressed = take_picture
   ```
 
-1. We need to write these two functions so that the buttons have something to do when they are pressed. Functions are usually written at the start of a program immediately after the `import` statements. Add the functions, but with some placeholder code to just print a message when they are pressed, so we can test them.
+1. We will write these two functions so that the buttons know what to do when they are pressed. Functions are usually written at the start of a program immediately after the `import` statements. Add the functions, but with some placeholder code to just print a message when they are pressed, so we can test them.
 
   ```python
   def next_overlay():
@@ -57,9 +56,20 @@ from gpiozero import Button
 
     ![Test the buttons](images/test-buttons.png)
 
-## Add an overlay
+## Add fun overlays
+
+1. The All Seeing Pi isn't a normal photo booth. The second button we set up, `next_overlay_btn`, is used to change between 'overlays' or funky additional pictures to make your photos look cool. Here is an example of a picture taken with an overlay:
+
+    ![Rik with pigtail overlay](images/rik-picture.png)
+
+    You can make your own overlays or we have provided some ready made ones that you can download
+
 
 ## Change overlays with a button
+
+## Take a picture when button pressed
+
+from picamera import PiCamera
 
 ## Tweet picture
 
