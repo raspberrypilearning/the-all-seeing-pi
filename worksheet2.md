@@ -114,7 +114,7 @@ In this resource you will make a tweeting touch screen photo booth using a Raspb
 
 1. Create a subfolder within your `allseeingpi` folder called `overlays` and place your overlay images inside it.
 
-1. We will need some functions to be able to work with our overlays. If you would like to use our [pre-written overlay functions](code/overlay_functions.py), download a copy of the file and save it as `overlay_functions.py` in your `allseeingpi` directory. If you would like to see a full explanation of what these functions do, or you would prefer to write them yourself, head to the [overlay functions explanation page](worksheet3.md) to find out how to do this.
+1. We will need some functions to be able to work with our overlays. If you would like to use our [pre-written overlay functions](code/overlay_functions.py), download a copy of the file and save it as `overlay_functions.py` **making sure to save it in your `allseeingpi` directory where the `allseeingpi.py` script is also saved**. If you would like to see a full explanation of what these functions do, or you would prefer to write them yourself, head to the [overlay functions explanation page](worksheet3.md) to find out how to do this.
 
 1. Next to the other `import` statements in your program, add another one to import this file:
 
@@ -126,20 +126,115 @@ In this resource you will make a tweeting touch screen photo booth using a Raspb
 
 ## Change overlays with a button
 
-1. The other button you wired up to your All Seeing Pi (called `next_overlay_btn`) will be the one we use to switch between the various overlays. Locate the `def next_overlay():` line and delete the line `print ("Next overlay")`. In its place, add the following code, making sure the lines are indented:
+1. The other button you wired up to your All Seeing Pi (called `next_overlay_btn`) will be the one we use to switch between the various overlays. Locate the function `def next_overlay():` and delete the indented line `print ("Next overlay")`. In its place, add the following code, making sure the lines are indented to show that they are part of the function:
 
   ```python
+  global overlay
   overlay = next(all_overlays)
   preview_overlay(camera, overlay)
   ```
 
-  The first line gets the *next overlay* from the list of `all_overlays` which is defined within the `overlay_functions.py` file. Then, the function `preview_overlay()` is called to add the overlay by giving it both the camera object and the overlay we want.
+  Firstly we have to declare the variable `overlay` as global. This means that when we change the current overlay, that value is saved 'in the global scope' which means that we can access it and use it from anywhere, and the change isn't lost when we exit this function.
 
-1. Save your program and run it by pressing `F5`. Check that when you press the button to change between overlays, the overlays change. (Ensure you have at least one overlay image in your overlays folder!)
+  The second line gets the next overlay from the list of `all_overlays` (defined within the `overlay_functions.py` file) and sets this as the current `overlay`. Then, the function `preview_overlay()` is called to display the new overlay.
 
+1. Save your program and run it by pressing `F5`. Check that when you press the button to change between overlays, the overlays change. (Ensure you have at least one overlay image in your overlays folder to be able to change between them!)
+
+  Here is the [program so far](code/change_overlays_and_take_picture.py)
+
+1. You will notice that when you take a picture, two things happen. Firstly, the overlay does not disappear and probably makes it quite difficult to see what you are doing - close the Python Shell window to get rid of the overlay. Secondly, people can see a camera preview and can choose a silly hat from the overlays, but when they take the photograph the overlay disappears. We need to add code to remove the overlay from the screen once the picture is taken, and superimpose it onto the saved photograph.
 
 ## Save overlay on your picture
 
-## Tweet picture
+1. Locate the function `def take_picture():` and add two lines of code at the end of the function:
+
+  ```python
+  def take_picture():
+    camera.capture(output)
+    camera.stop_preview()
+    remove_overlays(camera)         # Add this line
+    output_overlay(output, overlay) # Add this line
+  ```
+
+  Here we are using two more functions from the `overlay_functions` file. The function `remove_overlays` does exactly what it says, and removes all of the overlays so they don't hang around after we took a photograph. The `output_overlay` function takes the photograph and the overlay and glues them together so the resulting final output is a photograph with the chosen overlay superimposed.
+
+1. Once again, save your file and run it using `F5` to check that you can now change between overlays and when you take a photograph, your chosen overlay is saved as part of the picture.
 
 ## Create a GUI
+
+We have an almost working All Seeing Pi. However, when a picture is taken, the camera preview disappears and the user is left staring at the Python Shell and the Raspbian desktop. You probably don't want your selfie-takers to have to restart the Python program every time someone takes a picture. We will create a very simple GUI to display the picture that was taken and allow them to take another picture.
+
+1. To create the GUI we will use a library called **guizero** which you should have already installed in the [software installation](software.md) step. Add another import line with the others at the start of your program to bring in the guizero functions we need:
+
+  ```python
+  from guizero import App, PushButton, Text, Picture
+  ```
+
+1. At the bottom of your current program, create the beginning of your GUI.
+
+  ```python
+  app = App("The All Seeing Pi", 800, 480)
+  message = Text(app, "I spotted you!")
+  app.display()
+  ```
+
+  First we create an "app" which is the basic container for the GUI. The dimensions are 800 x 400 because that is the resolution of the touchscreen, and the title bar will contain the text "The All Seeing Pi". It is possible to make the GUI full screen, but we will not do this for now because it can be difficult for testing. We also add a message `I spotted you!` and add it to the `app` before displaying everything.
+
+1. Save and run your program again. Check that when you press the button to take the photo, the camera preview exits and you see a mostly blank GUI with just a message saying `I spotted you!`.
+
+1. Now between the message line and the `app.display()` lines, add another line of code to create a button.
+
+  ```python
+  new_pic = PushButton(app, new_picture, text="New picture")
+  ```
+
+  Examining the arguments passed to this `PushButton` object we have three things:
+  - `app` - tells the button to add itself to the app
+  - `new_picture` - this is the **command** - when the button is pushed it will call the function new_picture (which we haven't written yet)
+  - `text="New picture"` - this is the text which will appear on the button
+
+1. We must write the `new_picture` function so that the button knows what to do when it is pressed. Place your cursor after the `take_picture()` function but before the code where we set up the buttons. **Ensure that your cursor is not indented** otherwise the code you write now will become part of the `take_picture()` function, which we do not want.
+
+  ```python
+  def new_picture():
+    camera.start_preview(alpha=128)
+    preview_overlay(camera, overlay)
+  ```
+
+  This function is very straightforward - it simply tells the camera to restart the preview, and to display the overlay (which will be the last overlay we used).
+
+1. Save and run your program using `F5` once again. Check that you can press your physical button to take a picture, and that the GUI displays once the camera preview disappears. Check that you can press the on-screen button to restart the camera preview and take another picture.
+
+## Display the picture
+
+You probably don't want your photo booth participants to have to go digging through the Raspbian filesystem to see their picture either, so let's add the picture they took onto the GUI.
+
+1. Locate the line of code where you set the `output` filename for the photograph using `strftime`. Immediately underneath it, add a new line of code to define the location where we will store the "latest photo" - the photo most recently taken using the booth.
+
+  ```python
+  latest_photo = '/home/pi/allseeingpi/latest.gif'
+  ```
+1. Now locate the line of code where you added the `PushButton` to your GUI. Immediately before that line, insert a line of code to display an image on the GUI:
+
+  ```
+  your_pic = Picture(app, latest_photo)
+  ```
+
+1. The file we are referring to, `latest.gif` does not yet exist, so if you run your program at the moment you will not see a photograph display on the GUI. We must add code inside the `take_picture()` function to generate this image so it can be displayed. Locate this function and underneath the other code in the function, add the following lines (remembering to ensure that any new lines of code are also indented):
+
+  ```python
+  size = 400, 400
+  new_img = Image.open(output)
+  new_img.thumbnail(size, Image.ANTIALIAS)
+  new_img.save(latest_photo, 'gif')
+
+  your_pic.set(latest_photo)
+  ```
+
+  This code opens the `output` image (the image containing the photo combined with the overlay) and creates a smaller thumbnail of that image in `gif` format and saves it as `latest_photo`. It then sets the image on the GUI (`your_pic`) to be that latest photo image using a function which is part of the **guizero** library.
+
+1. Save your code and test whether when you take a photograph it is displayed on the GUI. You may find that there is a short delay between the camera preview exiting and the image displaying on the GUI while it is saving.
+
+## Tweet picture
+
+1. Now that we have a

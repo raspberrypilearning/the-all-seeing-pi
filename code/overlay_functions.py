@@ -8,6 +8,7 @@ from itertools import cycle
 overlays_dir = "/home/pi/allseeingpi/overlays"
 pictures_dir = "/home/pi/allseeingpi"
 overlays = ['girl', 'cowboy', 'top', 'pink', 'glassesnose', 'moustache', 'sunglasses', 'elvis', 'emo', 'blackhat', 'emo2', 'baseball', 'flowers', 'santa', 'alps', 'mop', 'glasses']
+overlay = overlays[0]
 
 # Overlay functions 
 def _get_overlay_image(overlay):
