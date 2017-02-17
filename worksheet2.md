@@ -56,7 +56,7 @@ With the hardware set up, we can begin to program the software that will make ev
 
     ![Test the buttons](images/test-buttons.png)
 
-# Set up the camera
+## Set up the camera
 
 1. Now that we know the buttons work, let's set up the camera. First add an import statement with the others at the top:
 
@@ -241,9 +241,9 @@ You probably don't want your photo booth participants to have to go digging thro
 
 If you just want a fun photo booth to take and save pictures, you could stop there. Alternatively, why not go one step further and make your All Seeing Pi tweet the photo that was taken.
 
-1. You will need to set up a Twitter account and create an app for your All Seeing Pi. Follow steps 1-4 on the [Getting started with the Twitter API](https://www.raspberrypi.org/learning/getting-started-with-the-twitter-api/worksheet/) resource in a separate file and check that you can send a text tweet from Python.
+1. You will need to set up a Twitter account and create an app for your All Seeing Pi. Follow steps 1-4 on the [Getting started with the Twitter API](https://www.raspberrypi.org/learning/getting-started-with-the-twitter-api/worksheet/) resource in a separate file and check that you can successfully send a text tweet from Python.
 
-1. Save a copy of the `auth.py` file containing your Twitter API keys (which created during the "Getting started" tutorial) inside your `/home/pi/allseeingpi` folder.
+1. Save a copy of the `auth.py` file containing your Twitter API keys (which you created during the "Getting started" tutorial) inside your `/home/pi/allseeingpi` folder.
 
 1. Go back to your `allseeingpi.py` file and after the other import statements, import Twython:
 
@@ -280,7 +280,7 @@ If you just want a fun photo booth to take and save pictures, you could stop the
     )
   ```
 
-1. Add some code that will tweet the `output` picture:
+1. Add some more code inside the `send_tweet()` function to tweet the `output` picture. You can change the `message` if you want your tweet to say something different:
 
   ```python
   message = "The All Seeing Pi saw you!"
@@ -299,3 +299,11 @@ If you just want a fun photo booth to take and save pictures, you could stop the
 1. Save and run your program. Test that when you take a picture and press the **Tweet picture** button on the GUI, the picture is tweeted from your twitter account.
 
   ![Tweeted picture](images/tweet-result.png)
+
+
+The finished code is [here](code/finished_allseeingpi.py) for you to check against yours.
+
+## What next?
+- Can you add a text box or perhaps a touch screen keyboard to your GUI to allow someone to enter their Twitter handle?
+- Can you add an `@username` mention to the tweet text, using the Twitter handle that was entered via the GUI?
+- Could you make a more imaginative housing for your All Seeing Pi?
