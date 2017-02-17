@@ -1,18 +1,16 @@
-# With credit to Ben Nuttall and for the original version of this code
-
 from PIL import Image
-from time import gmtime, strftime
 from itertools import cycle
 
-# Change these values for your own setup
+# EDIT THESE VALUES ------------------------
 overlays_dir = "/home/pi/allseeingpi/overlays"
-pictures_dir = "/home/pi/allseeingpi"
 overlays = ['girl', 'cowboy', 'top', 'pink', 'glassesnose', 'moustache', 'sunglasses', 'elvis', 'emo', 'blackhat', 'emo2', 'baseball', 'flowers', 'santa', 'alps', 'mop', 'glasses']
-overlay = overlays[0]
+# ------------------------------------------
 
-# Overlay functions 
+
+overlay = overlays[0] # Starting value
+
 def _get_overlay_image(overlay):
-
+    
     # Open the overlay as an Image object
     return Image.open(overlays_dir + "/" + overlay + ".png")
 
@@ -27,16 +25,10 @@ def _pad(resolution, width=32, height=16):
     )
 
 def remove_overlays(camera):
-
+    
     # Remove all overlays from the camera preview
     for o in camera.overlays:
-        camera.remove_overlay(o)
-
-def gen_filename():
-
-    # Generate a filename with a timestamp
-    filename = strftime(pictures_dir + "/image-%d-%m %H:%M.png", gmtime())
-    return filename
+        camera.remove_overlay(o) 
 
 
 def preview_overlay(camera=None, overlay=None):

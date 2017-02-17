@@ -31,10 +31,12 @@ If you don't have fancy buttons or a touch screen, that's OK too - you can still
 
 1. Situate the buttons in your chosen housing. In the software, the button connected to GPIO 23 will select the next overlay, and the button connected to GPIO 25 will take the picture. (Don't worry if you accidentally wire your buttons up the other way around, simply swap the pin numbers in the code!)
 
-    ![All Seeing Pi in a laser cut box](images/asp-laser.png)
+    ![All Seeing Pi in a laser cut box](images/asp-lasercut.png)
 
 ## Finishing the set up
 
 1. To write the software, you will also need to connect a keyboard and mouse to your Raspberry Pi, as well as a display if you are not using the touchscreen.
 
-1. Power on your Raspberry Pi and check that the touchscreen works if you are using one. Once you have set up your hardware, head over to [worksheet 2](worksheet2.md) to find out how to write the software to control your All Seeing Pi.
+1. Power on your Raspberry Pi and check that the touchscreen works if you are using one.
+
+Once you have set up your hardware, head over to [worksheet 2](worksheet2.md) to find out how to write the software to control your All Seeing Pi.
