@@ -2,5 +2,9 @@
   img: camera
 - name: Raspberry Pi touch screen
   img: breadboard
-- name: 2 x buttons
+- name: 2 x large buttons
+  img: big-dome-push-button
+- name: 2 x tactile push buttons (if you are not using large buttons)
   img: tactile-push-button
+- name: Breadboard (only required if using small buttons)
+  img: breadboard

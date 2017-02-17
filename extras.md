@@ -1,3 +1,3 @@
 You'll also need:
 
-- A cardboard box
+- A cardboard box (optional)
