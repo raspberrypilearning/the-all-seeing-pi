@@ -1,10 +1,10 @@
 # The All Seeing Pi (Part 2 - Software)
 
-In this resource you will make a tweeting touch screen photo booth using a Raspberry Pi.
+With the hardware set up, we can begin to program the software that will make everything work.
 
 ## Test the buttons
 
-1. With the hardware set up, we can begin to program the software that will make everything work. To begin, open the file explorer, then right click on a blank space inside the file explorer window.
+1. To begin, open the file explorer, then right click on a blank space inside the file explorer window.
 
   ![File Explorer](images/file-explorer.png)
 
@@ -140,7 +140,7 @@ In this resource you will make a tweeting touch screen photo booth using a Raspb
 
 1. Save your program and run it by pressing `F5`. Check that when you press the button to change between overlays, the overlays change. (Ensure you have at least one overlay image in your overlays folder to be able to change between them!)
 
-  Here is the [program so far](code/change_overlays_and_take_picture.py)
+  Here is the [program so far](code/change_overlays_and_take_picture.py) if you want to check your progress.
 
 1. You will notice that when you take a picture, two things happen. Firstly, the overlay does not disappear and probably makes it quite difficult to see what you are doing - close the Python Shell window to get rid of the overlay. Secondly, people can see a camera preview and can choose a silly hat from the overlays, but when they take the photograph the overlay disappears. We need to add code to remove the overlay from the screen once the picture is taken, and superimpose it onto the saved photograph.
 
@@ -156,7 +156,7 @@ In this resource you will make a tweeting touch screen photo booth using a Raspb
     output_overlay(output, overlay) # Add this line
   ```
 
-  Here we are using two more functions from the `overlay_functions` file. The function `remove_overlays` does exactly what it says, and removes all of the overlays so they don't hang around after we took a photograph. The `output_overlay` function takes the photograph and the overlay and glues them together so the resulting final output is a photograph with the chosen overlay superimposed.
+  Here we are using two more functions from the `overlay_functions` file. The function `remove_overlays` does exactly what it says, and removes all of the overlays so they don't hang around after we take a photograph. The `output_overlay` function takes the photograph and the overlay and glues them together so the resulting final output is a photograph with the chosen overlay superimposed.
 
 1. Once again, save your file and run it using `F5` to check that you can now change between overlays and when you take a photograph, your chosen overlay is saved as part of the picture.
 
@@ -188,12 +188,12 @@ We have an almost working All Seeing Pi. However, when a picture is taken, the c
   new_pic = PushButton(app, new_picture, text="New picture")
   ```
 
-  Examining the arguments passed to this `PushButton` object we have three things:
+  Examining the arguments passed to this `PushButton` object we have three parts:
   - `app` - tells the button to add itself to the app
-  - `new_picture` - this is the **command** - when the button is pushed it will call the function new_picture (which we haven't written yet)
+  - `new_picture` - this is the **command** - when the button is pushed it will call the function `new_picture()` (which we haven't written yet!)
   - `text="New picture"` - this is the text which will appear on the button
 
-1. We must write the `new_picture` function so that the button knows what to do when it is pressed. Place your cursor after the `take_picture()` function but before the code where we set up the buttons. **Ensure that your cursor is not indented** otherwise the code you write now will become part of the `take_picture()` function, which we do not want.
+1. Now write the `new_picture` function so that the button knows what to do when it is pressed. Write this code after the `take_picture()` function but before the code where we set up the buttons. **Ensure that your cursor is not indented** otherwise the code you write now will become part of the `take_picture()` function, which we do not want.
 
   ```python
   def new_picture():
@@ -207,34 +207,95 @@ We have an almost working All Seeing Pi. However, when a picture is taken, the c
 
 ## Display the picture
 
-You probably don't want your photo booth participants to have to go digging through the Raspbian filesystem to see their picture either, so let's add the picture they took onto the GUI.
+You probably don't want your photo booth participants to have to go digging through the Raspbian filesystem to see the picture they took either, so let's display the picture they took on the GUI.
 
 1. Locate the line of code where you set the `output` filename for the photograph using `strftime`. Immediately underneath it, add a new line of code to define the location where we will store the "latest photo" - the photo most recently taken using the booth.
 
   ```python
   latest_photo = '/home/pi/allseeingpi/latest.gif'
   ```
-1. Now locate the line of code where you added the `PushButton` to your GUI. Immediately before that line, insert a line of code to display an image on the GUI:
+1. Now locate the line of code where you added the `PushButton` to your GUI. Immediately **before** that line, insert a line of code to display an image on the GUI:
 
   ```
   your_pic = Picture(app, latest_photo)
   ```
 
-1. The file we are referring to, `latest.gif` does not yet exist, so if you run your program at the moment you will not see a photograph display on the GUI. We must add code inside the `take_picture()` function to generate this image so it can be displayed. Locate this function and underneath the other code in the function, add the following lines (remembering to ensure that any new lines of code are also indented):
+1. The file we are referring to, `latest.gif` does not yet exist, so if you run your program at the moment you will not see a photograph display on the GUI. We must add code inside the `take_picture()` function to generate this image so it can be displayed. Locate the `take_picture()` function and underneath the other code in the function, add the following lines (remembering to ensure that the new lines of code are also indented):
 
   ```python
   size = 400, 400
-  new_img = Image.open(output)
-  new_img.thumbnail(size, Image.ANTIALIAS)
-  new_img.save(latest_photo, 'gif')
+  gif_img = Image.open(output)
+  gif_img.thumbnail(size, Image.ANTIALIAS)
+  gif_img.save(latest_photo, 'gif')
 
   your_pic.set(latest_photo)
   ```
 
-  This code opens the `output` image (the image containing the photo combined with the overlay) and creates a smaller thumbnail of that image in `gif` format and saves it as `latest_photo`. It then sets the image on the GUI (`your_pic`) to be that latest photo image using a function which is part of the **guizero** library.
+  This code opens the `output` image (the image containing the photo combined with the overlay) and creates a smaller thumbnail of that image in `gif` format and saves it at the location set up in `latest_photo`. It then sets the image on the GUI (`your_pic`) to be that latest photo image using the `set()` function which is part of the **guizero** library.
 
 1. Save your code and test whether when you take a photograph it is displayed on the GUI. You may find that there is a short delay between the camera preview exiting and the image displaying on the GUI while it is saving.
 
+    ![Displaypicture](images/display-picture.png)
+
 ## Tweet picture
 
-1. Now that we have a
+If you just want a fun photo booth to take and save pictures, you could stop there. Alternatively, why not go one step further and make your All Seeing Pi tweet the photo that was taken.
+
+1. You will need to set up a Twitter account and create an app for your All Seeing Pi. Follow steps 1-4 on the [Getting started with the Twitter API](https://www.raspberrypi.org/learning/getting-started-with-the-twitter-api/worksheet/) resource in a separate file and check that you can send a text tweet from Python.
+
+1. Save a copy of the `auth.py` file containing your Twitter API keys (which created during the "Getting started" tutorial) inside your `/home/pi/allseeingpi` folder.
+
+1. Go back to your `allseeingpi.py` file and after the other import statements, import Twython:
+
+  ```python
+  from twython import Twython
+  ```
+
+1. Immediately after importing Twython, add the following code to import your Twitter API credentials from your `auth.py` file:
+
+  ```python
+    from auth import (
+      consumer_key,
+      consumer_secret,
+      access_token,
+      access_token_secret
+  )
+  ```
+
+1. Create a new function after the `new_picture()` function, called `send_tweet()`:
+
+  ```python
+  def send_tweet():
+  ```
+
+1. Inside the function, instantiate a Twitter object:
+
+  ```python
+  def send_tweet():
+    twitter = Twython(
+      consumer_key,
+      consumer_secret,
+      access_token,
+      access_token_secret
+    )
+  ```
+
+1. Add some code that will tweet the `output` picture:
+
+  ```python
+  message = "The All Seeing Pi saw you!"
+  with open(output, 'rb') as photo:
+      twitter.update_status_with_media(status=message, media=photo)
+  ```
+
+1. Now find the code for the GUI where you create the `PushButton` for a new picture, and add another `PushButton` underneath it which will call the `send_tweet()` function when it is pressed:
+
+  ```python
+  tweet_pic = PushButton(app, send_tweet, text="Tweet picture")
+  ```
+
+  ![Tweet picture button](images/tweet-picture.png)
+
+1. Save and run your program. Test that when you take a picture and press the **Tweet picture** button on the GUI, the picture is tweeted from your twitter account.
+
+  ![Tweeted picture](images/tweet-result.png)
