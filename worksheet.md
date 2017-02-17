@@ -7,6 +7,10 @@ You can create your All Seeing Pi using any housing you like. Our first iteratio
 
   ![All Seeing Pi in a cardboard box](images/asp-cardboard.png)
 
+If you don't have fancy buttons or a touch screen, that's OK too - you can still make the All Seeing Pi! Here is a picture of the setup we used when creating this resource, the only extra hardware requirements are two tactile push buttons, four jumper leads and a PiCamera - you can use your usual monitor, keyboard, and mouse.
+
+  ![All Seeing Pi test setup](images/test-setup.png)
+
 ## Connecting the Raspberry Pi touch screen
 
 1. Set up your Raspberry Pi touch screen. There is a [good tutorial](https://thepihut.com/blogs/raspberry-pi-tutorials/45295044-raspberry-pi-7-touch-screen-assembly-guide) available to help you. Ensure that you power the touch screen via the Raspberry Pi with jumper leads as shown in the tutorial, and that the power supply you use is a good quality one.
@@ -29,4 +33,8 @@ You can create your All Seeing Pi using any housing you like. Our first iteratio
 
     ![All Seeing Pi in a laser cut box](images/asp-laser.png)
 
-Once you have set up your hardware, head over to [worksheet 2](worksheet2.md) to find out how to write the software to control your All Seeing Pi.
+## Finishing the set up
+
+1. To write the software, you will also need to connect a keyboard and mouse to your Raspberry Pi, as well as a display if you are not using the touchscreen.
+
+1. Power on your Raspberry Pi and check that the touchscreen works if you are using one. Once you have set up your hardware, head over to [worksheet 2](worksheet2.md) to find out how to write the software to control your All Seeing Pi.
