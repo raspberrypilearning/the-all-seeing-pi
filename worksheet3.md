@@ -62,7 +62,7 @@ def remove_overlays(camera):
         camera.remove_overlay(o)
 ```
 
-# Put the overlay on the camera preview
+## Put the overlay on the camera preview
 
 This function is passed a `PiCamera` object (`camera`) and a string (`overlay`). It removes all overlays currently associated with the camera object, creates a PIL Image object of the chosen overlay called `overlay_img`, pads that image to display correctly and then adds it to the camera preview. The alpha of the preview is set to 128 so that the overlay is semi transparent. If the overlay was made fully opaque it would obscure the camera preview.
 
@@ -83,9 +83,9 @@ def preview_overlay(camera=None, overlay=None):
     camera.add_overlay(pad.tobytes(), alpha=128, layer=3)
 ```
 
-# Save picture with overlay
+## Save picture with overlay
 
-This function takes the location to save to (`output`) and the given overlay (`overlay`), both as strings. It then creates a PIL Image object of the specified overlay, creates an blank PIL Image to save the output to, and then combines the photograph at the location of `output` with the overlay, re-saving the finished photograph at the `output` location.
+This function takes the location of the photograph (`output`) and the given overlay (`overlay`), both as strings. It then creates a PIL Image object of the specified overlay, also creates a blank PIL Image to save the finished output to, and then combines the photograph with the overlay, re-saving the finished photograph at the `output` location.
 
 ```python
 def output_overlay(output=None, overlay=None):
@@ -103,8 +103,12 @@ def output_overlay(output=None, overlay=None):
 
 # Overlays cycle
 
-This code creates an iterable object called a `cycle` which can be used when the `next_overlay_btn` is pressed in order to receive the next overlay in the list. The cycle is needed because when the end of the list of overlays is reached, we want to begin again with the first overlay.
+This code creates a `cycle`. We use the `next()` function on this cycle when the `next_overlay_btn` is pressed in order to receive the next overlay in the list. A cycle is needed because when the end of the list of overlays is reached, we want to automatically begin again with the first overlay.
 
 ```python
 all_overlays = cycle(overlays)
 ```
+
+## What next?
+
+Now you know what all of the overlay functions do, head back to "Working with overlays" in [worksheet 2](worksheet2.md) to find out how to create the software.

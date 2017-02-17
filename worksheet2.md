@@ -117,7 +117,7 @@ With the hardware set up, we can begin to program the software that will make ev
 1. We will need some functions to be able to work with our overlays. If you would like to use our [pre-written overlay functions](code/overlay_functions.py), download a copy of the file and save it as `overlay_functions.py` **making sure to save it in your `allseeingpi` directory where the `allseeingpi.py` script is also saved**. If you would like to see a full explanation of what these functions do, or you would prefer to write them yourself, head to the [overlay functions explanation page](worksheet3.md) to find out how to do this, then resume the tutorial at the following step.
 
 1. In the `overlay_functions.py` file, find the comment `# EDIT THESE VALUES ------------------------`. You will need to change this code to specify two things
-  - Set the `overlays_dir` to the directory where your overlays are stored. If you are following the resource exactly you will not need to change this
+  - Set the `overlays_dir` to the directory where your overlays are stored. If you are following this tutorial exactly you will not need to change this directory location.
   - Set the `overlays` to be a list of the filenames of the overlays (without extension), surrounded by quotes and separated by commas. For example if you had overlay images called `rock.png`, `paper.png` and `scissors.png` your line of code would look like this:
 
   ```python
