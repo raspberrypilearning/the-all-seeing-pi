@@ -19,6 +19,8 @@ def next_overlay():
 
 # Tell the take picture button what to do
 def take_picture():
+    global output
+    output = strftime("/home/pi/allseeingpi/image-%d-%m %H:%M.png", gmtime())
     camera.capture(output)
     camera.stop_preview()
     remove_overlays(camera)
@@ -67,7 +69,7 @@ camera.hflip = True
 camera.start_preview(alpha=128)
 
 # Set up filename
-output = strftime("/home/pi/allseeingpi/image-%d-%m %H:%M.png", gmtime())
+output = ""
 
 latest_photo = '/home/pi/allseeingpi/latest.gif'
 

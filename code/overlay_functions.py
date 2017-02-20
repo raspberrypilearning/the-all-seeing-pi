@@ -1,3 +1,6 @@
+# Adapted from some original code by bennuttall and waveform80
+# -------------------------------------------------------------
+ 
 from PIL import Image
 from itertools import cycle
 
