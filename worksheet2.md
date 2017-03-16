@@ -210,13 +210,13 @@ We have an almost working All Seeing Pi. However, when a picture is taken, the c
 
 1. Save and run your program again. Check that when you press the button to take the photo, the camera preview exits and you see a mostly blank GUI with just a message saying `I spotted you!`.
 
-1. Now between the message line and the `app.display()` lines, add another line of code to create a button.
+1. Now between the message line and the `app.display()` line, add another line of code to create a button.
 
     ```python
     new_pic = PushButton(app, new_picture, text="New picture")
     ```
 
-    Examining the arguments passed to this `PushButton` object we have three parts:
+    Examining the arguments passed to this `PushButton` object, we have three parts:
     - `app` - tells the button to add itself to the app
     - `new_picture` - this is the **command** - when the button is pushed it will call the function `new_picture()` (which we haven't written yet!)
     - `text="New picture"` - this is the text which will appear on the button
@@ -240,7 +240,7 @@ Now that we have introduced the ability to run the program only once but take mu
     ```python
     output = strftime("/home/pi/allseeingpi/image-%d-%m %H:%M.png", gmtime())
     ```
-
+    
     However, we only execute this line of code once during the program. This means that every time the button is pressed to take a picture, it is saved to the same location, with the same filename. To fix this, we need to regenerate the filename every time we take a picture.
 
 1. Locate this line of code and copy it so you can paste it somewhere else shortly. Then, change the output to be equal to an empty string:
