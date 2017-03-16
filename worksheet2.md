@@ -56,12 +56,12 @@ With the hardware set up, we can begin to program the software that will make ev
 
     ![Test the buttons](images/test-buttons.png)
 
-    If your buttons do not produce this result, first check that they are wired up correctly. The button pins should be in **different** rows of the breadboard like this:
+    If your buttons do not produce this result, check that they are wired up correctly, and that they are connected to GPIO pins 23 and 25 on the Raspberry Pi. The button pins should be in **different** rows of the breadboard like this:
 
     ![Right way to put button](images/right-button.png)
     ![Wrong way to put button](images/wrong-button.png)
 
-    You may have buttons with two legs on each side. These should be placed over the gap on your breadboard with the jumper wires both attached into one side. Take care to ensure the jumper wires are in the same rows as the legs of the button.
+    You may have buttons with two legs on each side. These should be placed across the gap on your breadboard with the jumper wires both attached into one side. Take care to ensure the jumper wires are in the same rows as the legs of the button.
 
     ![Four prong button](images/four-prong-button.png)
 
@@ -101,15 +101,17 @@ With the hardware set up, we can begin to program the software that will make ev
 
   This will create a variable called `output` which contains the location and filename of where the captured photo will be saved. The `%d`, `%m` (etc) characters are how we specify the time format - `%d` means the day and `%m` means the month, for example. If you would like the date format in your filename to be different, there is a full [strftime reference](https://docs.python.org/2/library/time.html#time.strftime) available. The current date and time is provided by calling the function `gmtime()`.
 
-1. Now we will add some proper code to the `take_picture()` function, so that it actually takes a picture instead of just printing a message. Locate the line `def take_picture()`. Delete the line `print("Take a picture")` and in its place, add the following lines, making sure they are indented:
+1. Now let's revisit the `take_picture()` function and add some new code so that it actually takes a picture instead of just printing a message. Locate the line `def take_picture()`. Delete the line `print("Take a picture")` and in its place, add the following lines, making sure they are indented:
 
-  ```python
-  def take_picture():
-    camera.capture(output)
-    camera.stop_preview()
-  ```
+    ```python
+    def take_picture():
+        camera.capture(output)
+        camera.stop_preview()
+    ```
 
   This code captures a picture, saving it to the location we just defined in the variable `output`. It then stops the camera preview.
+
+1. Press F5 to run your program, then press the button. 
 
 1. Navigate to the folder `/home/pi/allseeingpi` and check that the picture you just took has saved correctly.
 
