@@ -260,7 +260,8 @@ However, we only execute this line of code once during the program. This means t
         # .... code continues...
     ```
 
-    **Extra explanation (optional)**
+    **Extra explanation (optional)**:
+
     We are dealing with **scoping** here which is an important concept for programmers to understand. Why did we bother to create the variable `output` in the main part of the program, and **initialise** it as a blank string, when we could have just created it within the `take_picture()` function? The answer is that if we only created it within the `take_picture()` function, once the function finished executing, the variable would no longer exist. By declaring that we are talking about the `global` version of the `output` variable, we are telling the program that we want to use the variable `output` which we created in the main part of the program. This means that once the function exits, the variable `output` with the location of the saved picture will still exist. We need to have a permanent record where the picture was saved because it is used in other places within the program.
 
 ## Display the picture
@@ -300,6 +301,8 @@ You probably don't want your photo booth participants to have to go digging thro
 1. Save your code and test whether when you take a photograph it is displayed on the GUI. You may find that there is a short delay between the camera preview exiting and the image displaying on the GUI while it is saving.
 
     ![Displaypicture](images/display-picture.png)
+
+    You may notice that the picture quality of the image displayed on screen is not optimal. This is because the picture has been converted to gif format to be displayed on the GUI. The full quality png version of the photograph will still be saved in the `allseeingpi` folder.
 
 ## Tweet picture
 
@@ -341,7 +344,7 @@ If you just want a fun photo booth to take and save pictures, you could stop the
         consumer_secret,
         access_token,
         access_token_secret
-    )
+        )
     ```
 
 1. Add some more code inside the `send_tweet()` function to tweet the `output` picture. You can change the `message` if you want your tweet to say something different:
@@ -371,5 +374,5 @@ Once you are happy that your All Seeing Pi works, you may wish to remove the `al
 
 ## What next?
 - Can you add a text box or perhaps a touch screen keyboard to your GUI to allow someone to enter their Twitter handle?
-- Can you add an `@username` mention to the tweet text, using the Twitter handle that was entered via the GUI?
+- Can you use this twitter handle to add an `@username` mention to the tweet text?
 - Could you make a more imaginative housing for your All Seeing Pi?
