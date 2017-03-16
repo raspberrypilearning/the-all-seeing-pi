@@ -156,12 +156,13 @@ With the hardware set up, we can begin to program the software that will make ev
 1. The other button you wired up to your All Seeing Pi (called `next_overlay_btn`) will be the one we use to switch between the various overlays. Locate the function `def next_overlay():` and delete the indented line `print ("Next overlay")`. In its place, add the following code, making sure the lines are indented to show that they are part of the function:
 
     ```python
-    global overlay
-    overlay = next(all_overlays)
-    preview_overlay(camera, overlay)
+    def next_overlay():
+        global overlay
+        overlay = next(all_overlays)
+        preview_overlay(camera, overlay)
     ```
 
-    Firstly we have to declare the variable `overlay` as global. This means that when we change the current overlay, that value is saved 'in the global scope' which means that we can access it and use it from anywhere, and the change isn't lost when we exit this function.
+    Firstly we have to declare we want to use the global variable `overlay`. This means that when we change the overlay, that value is saved so that we can access it and use it from anywhere, and the change isn't lost when we exit this function.
 
     The second line gets the next overlay from the list of `all_overlays` (defined within the `overlay_functions.py` file) and sets this as the current `overlay`. Then, the function `preview_overlay()` is called to display the new overlay.
 
@@ -205,7 +206,7 @@ We have an almost working All Seeing Pi. However, when a picture is taken, the c
     app.display()
     ```
 
-  First we create an "app" which is the basic container for the GUI. The dimensions are 800 x 480 because that is the resolution of the touchscreen, and the title bar will contain the text "The All Seeing Pi". It is possible to make the GUI full screen, but we will not do this for now because it can be difficult for testing. We also add a message `I spotted you!` and add it to the `app` before displaying everything.
+    First we create an "app" which is the basic container for the GUI. The dimensions are 800 x 480 because that is the resolution of the touchscreen, and the title bar will contain the text "The All Seeing Pi". It is possible to make the GUI full screen, but we will not do this for now because it can be difficult for testing. We also add a message `I spotted you!` and add it to the `app` before displaying everything.
 
 1. Save and run your program again. Check that when you press the button to take the photo, the camera preview exits and you see a mostly blank GUI with just a message saying `I spotted you!`.
 
@@ -366,7 +367,7 @@ If you just want a fun photo booth to take and save pictures, you could stop the
 
 The finished code is [here](code/finished_allseeingpi.py) for you to check against yours.
 
-Once you are happy that your All Seeing Pi works, you may wish to remove the `alpha=128` command from the camera preview to make it fully opaque. You can also make the GUI full screen - locate the line `app = App("The All Seeing Pi", 800, 480)` and immediately after it, add the line `app.attributes("-fullscreen", True)`. 
+Once you are happy that your All Seeing Pi works, you may wish to remove the `alpha=128` command from the camera preview to make it fully opaque. You can also make the GUI full screen - locate the line `app = App("The All Seeing Pi", 800, 480)` and immediately after it, add the line `app.attributes("-fullscreen", True)`.
 
 ## What next?
 - Can you add a text box or perhaps a touch screen keyboard to your GUI to allow someone to enter their Twitter handle?
