@@ -10,6 +10,8 @@ sudo pip3 install twython
 sudo apt-get install python-PIL
 ```
 
+This will install the necessary software to control the PiCamera, create a GUI, tweet and manipulate images.
+
 If you are using the Raspberry Pi touch screen to make this resource, you will also need to enter the following commands:
 
 ```bash

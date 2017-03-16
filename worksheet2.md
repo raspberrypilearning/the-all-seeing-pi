@@ -44,17 +44,26 @@ With the hardware set up, we can begin to program the software that will make ev
 
 1. We will write these two functions so that the buttons know what to do when they are pressed. Functions are usually written at the start of a program immediately after the `import` statements. Add the functions, but with some placeholder code to just print a message when they are pressed, so we can test them.
 
-  ```python
-  def next_overlay():
-    print("Next overlay")
+    ```python
+    def next_overlay():
+        print("Next overlay")
 
-  def take_picture():
-    print("Take a picture")
+    def take_picture():
+        print("Take a picture")
   ```
 
 1. Press `F5`, save and run your program. Try pressing each button and check that a different message pops up for each in the Python shell.
 
     ![Test the buttons](images/test-buttons.png)
+
+    If your buttons do not produce this result, first check that they are wired up correctly. The button pins should be in **different** rows of the breadboard like this:
+
+    ![Right way to put button](images/right-button.png)
+    ![Wrong way to put button](images/wrong-button.png)
+
+    You may have buttons with two legs on each side. These should be placed over the gap on your breadboard with the jumper wires both attached into one side. Take care to ensure the jumper wires are in the same rows as the legs of the button.
+
+    ![Four prong button](images/four-prong-button.png)
 
 ## Set up the camera
 

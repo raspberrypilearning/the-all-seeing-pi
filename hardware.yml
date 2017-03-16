@@ -1,10 +1,12 @@
 - name: Raspberry Pi camera module
   img: camera
-- name: Raspberry Pi touch screen
-  img: breadboard
-- name: 2 x large buttons
-  img: big-dome-push-button
-- name: 2 x tactile push buttons (if you are not using large buttons)
+- name: Raspberry Pi touch screen or standard monitor
+  img: monitor
+- name: 2 x tactile push buttons
   img: tactile-push-button
-- name: Breadboard (only required if using small buttons)
+- name: Breadboard
   img: breadboard
+- name: 4 x Male-female jumper leads
+  img: jumper-male-to-female
+- name: 2 x large buttons (optional, to replace tactile push buttons)
+  img: big-dome-push-button
