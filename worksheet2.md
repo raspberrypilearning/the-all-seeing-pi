@@ -121,7 +121,7 @@ This code creates a 'PiCamera' object with the resolution set to 800 × 480, whi
 
     ![Rik with pigtail overlay](images/rik-picture.png)
 
-    You can make your own overlays, or use the ready-made ones we have provided for you to download. If you are creating your own overlays, make sure that they are saved at 800 × 480 resolution as PNG files, with the background set to transparent.
+    You can make your own overlays, or use the ready-made ones we have provided for you to download. If you are creating your own overlays, make sure that they are saved at 800 × 480 resolution as PNG files, with the background set to transparent.
 
 1. Create a subfolder called `overlays` within your `allseeingpi` folder, and place your overlay images inside it.
 
