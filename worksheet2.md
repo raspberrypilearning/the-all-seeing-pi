@@ -4,7 +4,7 @@ With the hardware set up, we can begin to program the software that will make ev
 
 ## Test the buttons
 
-1. To begin, open the file explorer, then right click on a blank space inside the file explorer window.
+1. To begin, open the **File Explorer**, then right click on a blank space inside the File Explorer window.
 
     ![File Explorer](images/file-explorer.png)
 
