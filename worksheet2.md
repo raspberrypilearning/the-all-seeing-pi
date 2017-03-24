@@ -1,4 +1,4 @@
-# The All Seeing Pi (Part 2 - Software)
+# The All-Seeing Pi Worksheet 2: Software
 
 With the hardware set up, we can begin to program the software that will make everything work.
 
@@ -8,27 +8,27 @@ With the hardware set up, we can begin to program the software that will make ev
 
     ![File Explorer](images/file-explorer.png)
 
-1. Select `Create new` and then click `Folder`
+1. Select **Create new** and then click **Folder**. 
 
     ![Create folder menu](images/create-folder.png)
 
-1. Type in the name of the folder where you will store the code and the photographs. We chose to call ours `allseeingpi`. Make a note of the path to this folder which is displayed in the bar at the top, which should be `/home/pi/allseeingpi`
+1. Type in the name of the folder where you will store the code and the photographs. We chose to call ours `allseeingpi`. Make a note of the path to this folder which is displayed in the bar at the top, which should be `/home/pi/allseeingpi`.
 
-1. From the "Programming" menu, open up "Python 3"
+1. From the **Programming** menu, open up **Python 3**.
 
     ![Open Python 3](images/python3-app-menu.png)
 
-1. Create a new Python file by clicking on `File` > `New File`.
+1. Create a new Python file by clicking on **File > New File**.
 
-1. Click on `File` > `Save` and save your file into the `allseeingpi` folder you just created, with the filename `allseeingpi.py`.
+1. Click on **File > Save** and save your file into the `allseeingpi` folder you just created, with the filename `allseeingpi.py`.
 
-1. We will need the `gpiozero` library. At the start of your Python file add an import statement:
+1. We will need the `gpiozero` library. At the start of your Python file, add an import statement:
 
     ```python
     from gpiozero import Button
     ```
 
-1. Next we will set up the buttons. On the [previous worksheet](worksheet.md) we wired our buttons to pins 23 and 25. Let's go ahead and set both buttons up.
+1. Next we will set up the buttons. On the [previous worksheet](worksheet.md), we wired our buttons to GPIO 23 and GPIO 25. Let's go ahead and set both buttons up.
 
     ```python
     next_overlay_btn = Button(23)
