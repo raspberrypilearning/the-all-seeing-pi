@@ -52,7 +52,7 @@ With the hardware set up, we can begin to program the software that will make ev
         print("Take a picture")
     ```
 
-1. Press **F5**, then save and run your program. Try pressing each button and check that a different message pops up for each in the Python shell.
+1. Save your program, then press **F5** to run it. Try pressing each button and check that a different message pops up for each in the Python shell.
 
     ![Test the buttons](images/test-buttons.png)
 
