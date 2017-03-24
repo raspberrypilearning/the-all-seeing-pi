@@ -138,7 +138,7 @@ This code creates a 'PiCamera' object with the resolution set to 800 × 480, whi
     You will need to change this code to specify two things:
     
       - Set the `overlays_dir` to the directory where your overlays are stored. If you are following this tutorial exactly, you will **not** need to change this directory location.
-      - Set the `overlays` to be a list of the filenames of the overlays (without extension), surrounded by quotes and separated by commas. For example if you had overlay images called `rock.png`, `paper.png`, and `scissors.png`, your line of code would look like this:
+      - Set the `overlays` to be a list of the filenames of the overlays (without extension), surrounded by quotes and separated by commas. For example, if you had overlay images called `rock.png`, `paper.png`, and `scissors.png`, your line of code would look like this:
 
     ```python
     overlays = ['rock', 'paper', 'scissors']
