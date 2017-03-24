@@ -42,7 +42,7 @@ With the hardware set up, we can begin to program the software that will make ev
     take_pic_btn.when_pressed = take_picture
     ```
 
-1. We will write these two functions so that the buttons know what to do when they are pressed. Functions are usually written at the start of a program, immediately after the `import` statements. Add the functions, but with some placeholder code to just print a message when they are pressed, so we can test them.
+1. We will write these two functions so that the buttons know what to do when they are pressed. Functions are usually written at the start of a program, immediately after the import statements. Add the functions, but with some placeholder code to just print a message when they are pressed, so we can test them.
 
     ```python
     def next_overlay():
@@ -56,10 +56,10 @@ With the hardware set up, we can begin to program the software that will make ev
 
     ![Test the buttons](images/test-buttons.png)
 
-    If your buttons do not produce this result, check that they are wired up correctly, and that they are connected to GPIO pins 23 and 25 on the Raspberry Pi. The button pins should be in **different** rows of the breadboard like this:
+    If your buttons do not produce this result, check that they are wired up correctly, and that they are connected to GPIO pins 23 and 25 on the Raspberry Pi. The button pins should be in **different** rows of the breadboard, like this:
 
-    ![Right way to put button](images/right-button.png)
-    ![Wrong way to put button](images/wrong-button.png)
+    ![Right way to place button](images/right-button.png)
+    ![Wrong way to place button](images/wrong-button.png)
 
     You may have buttons with two legs on each side. These should be placed across the gap on your breadboard with the jumper wires both attached into one side. Take care to ensure the jumper wires are in the same rows as the legs of the button.
 
@@ -67,13 +67,13 @@ With the hardware set up, we can begin to program the software that will make ev
 
 ## Set up the camera
 
-1. Now that we know the buttons work, let's set up the code for the camera. First add an import statement with the others at the top:
+1. Now that we know the buttons work, let's set up the code for the camera. First add an import statement to the existing ones at the top of the program:
 
   ```python
   from picamera import PiCamera
   ```
 
-1. Locate the existing line `take_pic_btn.when_pressed = take_picture` and below it add the following code to set up the camera object:
+1. Locate the existing line `take_pic_btn.when_pressed = take_picture` and, below it, add the following code to set up the camera object:
 
   ```python
   camera = PiCamera()
@@ -82,24 +82,24 @@ With the hardware set up, we can begin to program the software that will make ev
   camera.start_preview(alpha=128)
   ```
 
-  This code creates a PiCamera object with the resolution set to 800x480, which is the resolution of the Raspberry Pi touchscreen. We also tell the camera to flip the preview horizontally (`hflip`): if we don't do this, the preview image will be mirrored, which makes it hard for people to align themselves with the overlays! We then start the preview with alpha set to `128` so that it is semi-transparent in case we get an error and need to see what is happening underneath. When you are confident that your code works, you can remove the `alpha=128` to make the preview fully opaque.
+  This code creates a 'PiCamera' object with the resolution set to 800 × 480, which is the resolution of the Raspberry Pi touchscreen. We also tell the camera to flip the preview horizontally (`hflip`): if we don't do this, the preview image will be mirrored, which makes it hard for people to align themselves with the overlays! We then start the preview with alpha set to `128` so that it is semi-transparent; this is in case we get an error and need to see what is happening underneath. When you are confident that your code works, you can remove the `alpha=128` to make the preview fully opaque.
 
 
 ## Take a picture when the button is pressed
 
-1. Since we will probably take lots of pictures with the All-Seeing Pi, we will put the date and time the picture was taken within the filename to avoid a picture being overwritten each time a new one is taken. To do this, we will need the `gmtime` and `strftime` functions from the time library, so add this line with the other `import` statements:
+1. Since we will probably take lots of pictures with the All-Seeing Pi, we will put the date and time at which the picture was taken within the filename to avoid a picture being overwritten each time a new one is taken. To do this, we will need the **gmtime** and **strftime** functions from the **time** library, so add this line to the other import statements:
 
     ```python
     from time import gmtime, strftime
     ```
 
-1. Underneath your camera set up code, add the following line:
+1. Underneath your camera set-up code, add the following line:
 
     ```python
     output = strftime("/home/pi/allseeingpi/image-%d-%m %H:%M.png", gmtime())
     ```
 
-    This will create a variable called `output` which contains the location and filename of where the captured photo will be saved. The `%d`, `%m` (etc) characters are how we specify the time format - `%d` means the day and `%m` means the month, for example. If you would like the date format in your filename to be different, there is a full [strftime reference](https://docs.python.org/2/library/time.html#time.strftime) available. The current date and time is provided by calling the function `gmtime()`.
+    This will create a variable called `output` which contains the location and filename of where the captured photo will be saved. The `%d`, `%m` (etc) characters are how we specify the time format: `%d` means the day and `%m` means the month, for example. If you would like the date format in your filename to be different, there is a full [strftime reference guide](https://docs.python.org/2/library/time.html#time.strftime) available. The current date and time is provided by calling the function `gmtime()`.
 
 1. Now let's revisit the `take_picture()` function and add some new code so that it actually takes a picture instead of just printing a message. Locate the line `def take_picture()`. Delete the line `print("Take a picture")` and in its place, add the following lines, making sure they are indented:
 
@@ -111,49 +111,50 @@ With the hardware set up, we can begin to program the software that will make ev
 
     This code captures a picture, saving it to the location we just defined in the variable `output`. It then stops the camera preview.
 
-1. Press F5 to run your program, then press the button.
+1. Press **F5** to run your program, then press the button.
 
 1. Navigate to the folder `/home/pi/allseeingpi` and check that the picture you just took has saved correctly.
 
 ## Working with overlays
 
-1. The All Seeing Pi is no ordinary photo booth! The second button we set up, `next_overlay_btn`, is used to change between 'overlays' - fun pictures such as hats, beards and glasses which appear on the screen as if you are wearing them. Here is an example of a picture taken with an overlay:
+1. The All-Seeing Pi is no ordinary photo booth! The second button we set up, `next_overlay_btn`, is used to change between 'overlays': these are fun pictures such as hats, beards, and glasses which appear on the screen as if you are wearing them. Here is an example of a picture taken with an overlay:
 
     ![Rik with pigtail overlay](images/rik-picture.png)
 
-    You can make your own overlays or we have provided some ready made ones that you can download. If you are creating your own overlays, make sure that they are saved at 800x480 resolution as PNG files, with the background set to transparent.
+    You can make your own overlays, or use the ready-made ones we have provided for you to download. If you are creating your own overlays, make sure that they are saved at 800 × 480 resolution as PNG files, with the background set to transparent.
 
-1. Create a subfolder within your `allseeingpi` folder called `overlays` and place your overlay images inside it.
+1. Create a subfolder called `overlays` within your `allseeingpi` folder, and place your overlay images inside it.
 
-1. Navigate to the [overlays folder](https://github.com/raspberrypilearning/the-all-seeing-pi/tree/master/overlays) of the GitHub repo for this project. Click on the filename of the overlay you would like to use, then right click on the download link and save the image into the `overlays` folder you just created. Repeat this process until you have saved all of the overlays you would like to use.
+1. Navigate to the [overlays folder](https://github.com/raspberrypilearning/the-all-seeing-pi/tree/master/overlays) of the GitHub repo for this project. Click on the filename of the overlay you would like to use, then right-click on the download link and save the image into the `overlays` folder you just created. Repeat this process until you have saved all of the overlays you would like to use.
 
-1. Now [right click here](code/overlay_functions.py) and save this file as `overlay_functions.py`. Make sure you save this file in your `allseeingpi` directory (where the `allseeingpi.py` script is also saved). If you would like to see a full explanation of what these functions do, or you would prefer to write them yourself, head to the [overlay functions explanation page](worksheet3.md) to find out how to do this, then resume the tutorial at the next step.
+1. Now [right-click here](code/overlay_functions.py) and save this file as `overlay_functions.py`. Make sure you save this file in your `allseeingpi` directory (where the `allseeingpi.py` script is also saved). If you would like to see a full explanation of what these functions do, or you would prefer to write them yourself, head to the [overlay functions explanation page](worksheet3.md) to find out how to do this, then resume the tutorial at the next step.
 
-1. In the `overlay_functions.py` file, find the comment
+1. In the `overlay_functions.py` file, find this comment:
 
     ```
     # EDIT THESE VALUES ------------------------
     ```
 
     You will need to change this code to specify two things:
-      - Set the `overlays_dir` to the directory where your overlays are stored. If you are following this tutorial exactly you will **not** need to change this directory location.
-      - Set the `overlays` to be a list of the filenames of the overlays (without extension), surrounded by quotes and separated by commas. For example if you had overlay images called `rock.png`, `paper.png` and `scissors.png` your line of code would look like this:
+    
+      - Set the `overlays_dir` to the directory where your overlays are stored. If you are following this tutorial exactly, you will **not** need to change this directory location.
+      - Set the `overlays` to be a list of the filenames of the overlays (without extension), surrounded by quotes and separated by commas. For example if you had overlay images called `rock.png`, `paper.png`, and `scissors.png`, your line of code would look like this:
 
     ```python
     overlays = ['rock', 'paper', 'scissors']
     ```
 
-1. Now go back to your `allseeingpi.py` program. Next to the other `import` statements in your program, add another one to import this file:
+1. Now go back to your `allseeingpi.py` program. Next to the other import statements in your program, add another one to import this file:
 
     ```python
     from overlay_functions import *
     ```
 
-  This will allow us to use all of the overlay functions defined in the `overlay_functions.py` file, from within our `allseeingpi.py` file.
+  This will allow us to use all of the overlay functions defined in the `overlay_functions.py` file from within our `allseeingpi.py` file.
 
 ## Change overlays with a button
 
-1. The other button you wired up to your All Seeing Pi (called `next_overlay_btn`) will be the one we use to switch between the various overlays. Locate the function `def next_overlay():` and delete the indented line `print ("Next overlay")`. In its place, add the following code, making sure the lines are indented to show that they are part of the function:
+1. The other button you wired up to your All-Seeing Pi (called `next_overlay_btn`) will be the one we use to switch between the various overlays. Locate the function `def next_overlay():` and delete the indented line `print ("Next overlay")`. In its place, add the following code, making sure the lines are indented to show that they are part of the function:
 
     ```python
     def next_overlay():
@@ -162,15 +163,15 @@ With the hardware set up, we can begin to program the software that will make ev
         preview_overlay(camera, overlay)
     ```
 
-    Firstly we have to declare we want to use the global variable `overlay`. This means that when we change the overlay, that value is saved so that we can access it and use it from anywhere, and the change isn't lost when we exit this function.
+    First, we have to declare that we want to use the global variable, `overlay`. This means that when we change the overlay, that value is saved so that we can access it and use it from anywhere, and the change isn't lost when we exit this function.
 
-    The second line gets the next overlay from the list of `all_overlays` (defined within the `overlay_functions.py` file) and sets this as the current `overlay`. Then, the function `preview_overlay()` is called to display the new overlay.
+    The second line gets the next overlay from the list of `all_overlays` (defined within the `overlay_functions.py` file), and sets this as the current `overlay`. Then, the function `preview_overlay()` is called to display the new overlay.
 
-1. Save your program and run it by pressing `F5`. Check that when you press the button to change between overlays, the overlays change. (Ensure you have at least one overlay image in your overlays folder to be able to change between them!)
+1. Save your program, and run it by pressing **F5**. Check that when you press the button to change between overlays, the overlays change. Ensure you have at least one overlay image in your overlays folder to be able to change between them!
 
     Here is the [program so far](code/change_overlays_and_take_picture.py) if you want to check your progress.
 
-1. You will notice that when you take a picture, two things happen. Firstly, the overlay does not disappear and probably makes it quite difficult to see what you are doing - close the Python Shell window to get rid of the overlay. Secondly, people can see a camera preview and can choose a silly hat from the overlays, but when they take the photograph the overlay disappears. We need to add code to remove the overlay from the screen once the picture is taken, and superimpose it onto the saved photograph.
+1. You will notice that, when you take a picture, two things happen. Firstly, the overlay does not disappear and probably makes it quite difficult to see what you are doing: close the Python shell window to get rid of the overlay. Secondly, people can see a camera preview and can choose a silly hat from the overlays, but, when they take the photograph, the overlay disappears. We need to add code to remove the overlay from the screen once the picture is taken, and superimpose it onto the saved photograph.
 
 ## Save overlay on your picture
 
