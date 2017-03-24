@@ -22,7 +22,7 @@ With the hardware set up, we can begin to program the software that will make ev
 
 1. Click on **File > Save** and save your file into the `allseeingpi` folder you just created, with the filename `allseeingpi.py`.
 
-1. We will need the `gpiozero` library. At the start of your Python file, add an import statement:
+1. We will need the **gpiozero** library. At the start of your Python file, add an import statement:
 
     ```python
     from gpiozero import Button
@@ -42,7 +42,7 @@ With the hardware set up, we can begin to program the software that will make ev
     take_pic_btn.when_pressed = take_picture
     ```
 
-1. We will write these two functions so that the buttons know what to do when they are pressed. Functions are usually written at the start of a program immediately after the `import` statements. Add the functions, but with some placeholder code to just print a message when they are pressed, so we can test them.
+1. We will write these two functions so that the buttons know what to do when they are pressed. Functions are usually written at the start of a program, immediately after the `import` statements. Add the functions, but with some placeholder code to just print a message when they are pressed, so we can test them.
 
     ```python
     def next_overlay():
@@ -52,7 +52,7 @@ With the hardware set up, we can begin to program the software that will make ev
         print("Take a picture")
     ```
 
-1. Press `F5`, save and run your program. Try pressing each button and check that a different message pops up for each in the Python shell.
+1. Press **F5**, then save and run your program. Try pressing each button and check that a different message pops up for each in the Python shell.
 
     ![Test the buttons](images/test-buttons.png)
 
@@ -67,7 +67,7 @@ With the hardware set up, we can begin to program the software that will make ev
 
 ## Set up the camera
 
-1. Now that we know the buttons work, let's set up the camera. First add an import statement with the others at the top:
+1. Now that we know the buttons work, let's set up the code for the camera. First add an import statement with the others at the top:
 
   ```python
   from picamera import PiCamera
@@ -82,12 +82,12 @@ With the hardware set up, we can begin to program the software that will make ev
   camera.start_preview(alpha=128)
   ```
 
-  This code creates a PiCamera object with the resolution set to 800x480 which is the resolution of the Raspberry Pi touchscreen. We also tell the camera to flip the preview horizontally (`hflip`) because otherwise the preview image will be mirrored and this makes it hard for people to align themselves with the overlays! We then start the preview with alpha set to `128` so that it is semi-transparent in case we get an error and need to see what is happening underneath. When you are confident your code works you can remove the `alpha=128` to make the preview fully opaque.
+  This code creates a PiCamera object with the resolution set to 800x480, which is the resolution of the Raspberry Pi touchscreen. We also tell the camera to flip the preview horizontally (`hflip`): if we don't do this, the preview image will be mirrored, which makes it hard for people to align themselves with the overlays! We then start the preview with alpha set to `128` so that it is semi-transparent in case we get an error and need to see what is happening underneath. When you are confident that your code works, you can remove the `alpha=128` to make the preview fully opaque.
 
 
 ## Take a picture when the button is pressed
 
-1. Since we will probably take lots of pictures with the All Seeing Pi, we will put the date and time the picture was taken within the filename to avoid a picture being overwritten each time a new one is taken. To do this, we will need the `gmtime` and `strftime` functions from the time library, so add this line with the other `import` statements:
+1. Since we will probably take lots of pictures with the All-Seeing Pi, we will put the date and time the picture was taken within the filename to avoid a picture being overwritten each time a new one is taken. To do this, we will need the `gmtime` and `strftime` functions from the time library, so add this line with the other `import` statements:
 
     ```python
     from time import gmtime, strftime
@@ -370,9 +370,9 @@ If you just want a fun photo booth to take and save pictures, you could stop the
 
 The finished code is [here](code/finished_allseeingpi.py) for you to check against yours.
 
-Once you are happy that your All Seeing Pi works, you may wish to remove the `alpha=128` command from the camera preview to make it fully opaque. You can also make the GUI full screen - locate the line `app = App("The All Seeing Pi", 800, 480)` and immediately after it, add the line `app.attributes("-fullscreen", True)`.
+Once you are happy that your All-Seeing Pi works, you may wish to remove the `alpha=128` command from the camera preview to make it fully opaque. You can also make the GUI full screen: locate the line `app = App("The All Seeing Pi", 800, 480)` and, immediately after it, add the line `app.attributes("-fullscreen", True)`.
 
 ## What next?
-- Can you add a text box or perhaps a touch screen keyboard to your GUI to allow someone to enter their Twitter handle?
-- Can you use this twitter handle to add an `@username` mention to the tweet text?
-- Could you make a more imaginative housing for your All Seeing Pi?
+- Can you add a text box or perhaps a touchscreen keyboard to your GUI to allow someone to enter their Twitter handle?
+- Can you use this Twitter handle to add an `@username` mention to the tweet text?
+- Could you make a more imaginative housing for your All-Seeing Pi?
