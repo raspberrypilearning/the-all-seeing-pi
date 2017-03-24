@@ -187,13 +187,13 @@ With the hardware set up, we can begin to program the software that will make ev
 
     Here we are using two more functions from the `overlay_functions` file. The function `remove_overlays` does exactly what it says, and removes all of the overlays so they don't hang around after we take a photograph. The `output_overlay` function takes the photograph and the overlay and glues them together so the resulting final output is a photograph with the chosen overlay superimposed.
 
-1. Once again, save your file and run it using `F5` to check that you can now change between overlays and when you take a photograph, your chosen overlay is saved as part of the picture.
+1. Once again, save your file and run it using **F5** to check that you can now change between overlays, and that, when you take a photograph, your chosen overlay is saved as part of the picture.
 
 ## Create a GUI
 
-We have an almost working All Seeing Pi. However, when a picture is taken, the camera preview disappears and the user is left staring at the Python Shell and the Raspbian desktop. You probably don't want your selfie-takers to have to restart the Python program every time someone takes a picture. We will create a very simple GUI to display the picture that was taken and allow them to take another picture.
+We have an almost-working All-Seeing Pi. However, when a picture is taken, the camera preview disappears and the user is left staring at the Python shell and the Raspbian desktop. You probably don't want your selfie-takers to have to restart the Python program every time someone takes a picture. We will create a very simple GUI to display the picture that was taken and allow them to take another picture.
 
-1. To create the GUI we will use a library called **guizero** which you should have already installed in the [software installation](software.md) step. Add another import line with the others at the start of your program to bring in the guizero functions we need:
+1. To create the GUI we will use a library called **guizero**, which you should have already installed in the [software installation](software.md) step. Add another import line with the others at the start of your program to bring in the guizero functions we need:
 
     ```python
     from guizero import App, PushButton, Text, Picture
@@ -202,27 +202,28 @@ We have an almost working All Seeing Pi. However, when a picture is taken, the c
 1. At the bottom of your current program, create the beginning of your GUI.
 
     ```python
-    app = App("The All Seeing Pi", 800, 480)
+    app = App("The All-Seeing Pi", 800, 480)
     message = Text(app, "I spotted you!")
     app.display()
     ```
 
-    First we create an "app" which is the basic container for the GUI. The dimensions are 800 x 480 because that is the resolution of the touchscreen, and the title bar will contain the text "The All Seeing Pi". It is possible to make the GUI full screen, but we will not do this for now because it can be difficult for testing. We also add a message `I spotted you!` and add it to the `app` before displaying everything.
+    First, we create an **app**, which is the basic container for the GUI. The dimensions are 800 × 480 because that is the resolution of the touchscreen, and the title bar will contain the text "The All-Seeing Pi". It is possible to make the GUI full-screen, but we will not do this for now because it can be difficult for testing. We also create a message, `"I spotted you!"`, and add it to the app before displaying everything.
 
-1. Save and run your program again. Check that when you press the button to take the photo, the camera preview exits and you see a mostly blank GUI with just a message saying `I spotted you!`.
+1. Save and run your program again. Check that, when you press the button to take the photo, the camera preview exits and you see a mostly blank GUI with a message saying "I spotted you!".
 
-1. Now between the message line and the `app.display()` line, add another line of code to create a button.
+1. Now, between the message line and the `app.display()` line, add another line of code to create a button.
 
     ```python
     new_pic = PushButton(app, new_picture, text="New picture")
     ```
 
     Examining the arguments passed to this `PushButton` object, we have three parts:
-    - `app` - tells the button to add itself to the app
-    - `new_picture` - this is the **command** - when the button is pushed it will call the function `new_picture()` (which we haven't written yet!)
-    - `text="New picture"` - this is the text which will appear on the button
+    
+    - `app`: tells the button to add itself to the app
+    - `new_picture`: this is the **command**. When the button is pushed, it will call the function `new_picture()` (which we haven't written yet!)
+    - `text="New picture"`: this is the text which will appear on the button
 
-1. Now write the `new_picture` function so that the button knows what to do when it is pressed. Write this code after the `take_picture()` function but before the code where we set up the buttons. **Ensure that your cursor is not indented** otherwise the code you write now will become part of the `take_picture()` function, which we do not want.
+1. Now write the `new_picture` function so that the button knows what to do when it is pressed. Write this code after the `take_picture()` function, but before the code where we set up the buttons. **Ensure that your cursor is not indented**, otherwise the code you write now will become part of the `take_picture()` function, which we do not want.
 
     ```python
     def new_picture():
@@ -230,9 +231,9 @@ We have an almost working All Seeing Pi. However, when a picture is taken, the c
         preview_overlay(camera, overlay)
     ```
 
-    This function is very straightforward - it simply tells the camera to restart the preview, and to display the overlay (which will be the last overlay we used).
+    This function is very straightforward: it simply tells the camera to restart the preview, and to display the overlay (which will be the last overlay we used).
 
-1. Save and run your program using `F5` once again. Check that you can press your physical button to take a picture, and that the GUI displays once the camera preview disappears. Check that you can press the on-screen button to restart the camera preview and take another picture.
+1. Save your program, and run it using **F5** once again. Check that you can press your physical button to take a picture, and that the GUI displays once the camera preview disappears. Check that you can press the on-screen button to restart the camera preview and take another picture.
 
 ## Stop the picture overwriting
 
@@ -242,7 +243,7 @@ Now that we have introduced the ability to run the program only once but take mu
 output = strftime("/home/pi/allseeingpi/image-%d-%m %H:%M.png", gmtime())
 ```
 
-However, we only execute this line of code once during the program. This means that every time the button is pressed to take a picture, it is saved to the same location, with the same filename. To fix this, we need to regenerate the filename every time we take a picture.
+However, we only execute this line of code once during the program. This means that, every time the button is pressed to take a picture, it is saved to the same location, with the same filename. To fix this, we need to regenerate the filename every time we take a picture.
 
 1. Locate this line of code and copy it so you can paste it somewhere else shortly. Then, change the output to be equal to an empty string:
 
@@ -261,21 +262,19 @@ However, we only execute this line of code once during the program. This means t
         # .... code continues...
     ```
 
-    **Extra explanation (optional)**:
-
-    We are dealing with **scoping** here which is an important concept for programmers to understand. Why did we bother to create the variable `output` in the main part of the program, and **initialise** it as a blank string, when we could have just created it within the `take_picture()` function? The answer is that if we only created it within the `take_picture()` function, once the function finished executing, the variable would no longer exist. By declaring that we are talking about the `global` version of the `output` variable, we are telling the program that we want to use the variable `output` which we created in the main part of the program. This means that once the function exits, the variable `output` with the location of the saved picture will still exist. We need to have a permanent record where the picture was saved because it is used in other places within the program.
+    We are dealing with **scoping** here: this is an important concept for programmers to understand. Why did we bother to create the variable `output` in the main part of the program, and **initialise** it as a blank string, when we could have just created it within the `take_picture()` function? The answer is that if we only created it within the `take_picture()` function, once the function finished executing, the variable would no longer exist. By declaring that we are talking about the `global` version of the `output` variable, we are telling the program that we want to use the variable `output` which we created in the main part of the program. This means that once the function exits, the variable `output` with the location of the saved picture will still exist. We need to have a permanent record where the picture was saved because it is used in other places within the program.
 
 ## Display the picture
 
 You probably don't want your photo booth participants to have to go digging through the Raspbian filesystem to see the picture they took either, so let's display the picture they took on the GUI.
 
-1. Locate the line of code where you intialise the `output` variable
+1. Locate the line of code where you intialise the `output` variable:
 
     ```python
     output = ""
     ```
 
-    Immediately underneath it, add a new line of code to define the location where we will store the "latest photo" - the photo most recently taken using the booth.
+    Immediately underneath it, add a new line of code to define the location where we will store the `latest-photo`, i.e. the photo most recently taken using the booth.
 
     ```python
     latest_photo = '/home/pi/allseeingpi/latest.gif'
@@ -286,7 +285,7 @@ You probably don't want your photo booth participants to have to go digging thro
     your_pic = Picture(app, latest_photo)
     ```
 
-1. The file we are referring to, `latest.gif` does not yet exist, so if you run your program at the moment you will not see a photograph display on the GUI. We must add code inside the `take_picture()` function to generate this image so it can be displayed. Locate the `take_picture()` function and underneath the other code in the function, add the following lines (remembering to ensure that the new lines of code are also indented):
+1. The file we are referring to, `latest.gif`, does not yet exist, so if you run your program now you will not see a photograph displayed on the GUI. We must add code inside the `take_picture()` function to generate this image so that it can be displayed. Locate the `take_picture()` function and, underneath the other code in the function, add the following lines (remembering to ensure that the new lines of code are also indented):
 
     ```python
     size = 400, 400
@@ -297,23 +296,23 @@ You probably don't want your photo booth participants to have to go digging thro
     your_pic.set(latest_photo)
     ```
 
-    This code opens the `output` image (the image containing the photo combined with the overlay) and creates a smaller thumbnail of that image in `gif` format and saves it at the location set up in `latest_photo`. It then sets the image on the GUI (`your_pic`) to be that latest photo image using the `set()` function which is part of the **guizero** library.
+    This code opens the `output` image (the image containing the photo combined with the overlay), creates a smaller thumbnail of that image in **gif** format, and saves it at the location set up in `latest_photo`. It then sets the image on the GUI (`your_pic`) to be that latest photo image using the `set()` function which is part of the guizero library.
 
-1. Save your code and test whether when you take a photograph it is displayed on the GUI. You may find that there is a short delay between the camera preview exiting and the image displaying on the GUI while it is saving.
+1. Save your code and test whether, when you take a photograph, it is displayed on the GUI. You may find that there is a short delay between the camera preview exiting and the image displaying on the GUI while it is saving.
 
     ![Displaypicture](images/display-picture.png)
 
-    You may notice that the picture quality of the image displayed on screen is not optimal. This is because the picture has been converted to gif format to be displayed on the GUI. The full quality png version of the photograph will still be saved in the `allseeingpi` folder.
+    You may notice that the picture quality of the image displayed on screen is not optimal. This is because the picture has been converted to gif format to be displayed on the GUI. The full-quality png version of the photograph will still be saved in the `allseeingpi` folder.
 
 ## Tweet picture
 
-If you just want a fun photo booth to take and save pictures, you could stop there. Alternatively, why not go one step further and make your All Seeing Pi tweet the photo that was taken.
+If you just want a fun photo booth to take and save pictures, you could stop there. Alternatively, you could go one step further and make your All-Seeing Pi tweet the photo that was taken.
 
-1. You will need to set up a Twitter account and create an app for your All Seeing Pi. Follow steps 1-4 on the [Getting started with the Twitter API](https://www.raspberrypi.org/learning/getting-started-with-the-twitter-api/worksheet/) resource in a separate file and check that you can successfully send a text tweet from Python.
+1. You will need to set up a Twitter account and create an app for your All-Seeing Pi. Follow steps 1-4 on the [Getting started with the Twitter API](https://www.raspberrypi.org/learning/getting-started-with-the-twitter-api/worksheet/) resource in a separate file, and check that you can successfully send a textual tweet from Python.
 
-1. Save a copy of the `auth.py` file containing your Twitter API keys (which you created during the "Getting started" tutorial) inside your `/home/pi/allseeingpi` folder.
+1. Save a copy of the `auth.py` file containing your Twitter API keys (which you created during the 'Getting started' tutorial) inside your `/home/pi/allseeingpi` folder.
 
-1. Go back to your `allseeingpi.py` file and after the other import statements, import Twython:
+1. Go back to your `allseeingpi.py` file and, after the other import statements, import Twython:
 
     ```python
     from twython import Twython
@@ -348,15 +347,15 @@ If you just want a fun photo booth to take and save pictures, you could stop the
         )
     ```
 
-1. Add some more code inside the `send_tweet()` function to tweet the `output` picture. You can change the `message` if you want your tweet to say something different:
+1. Add some more code inside the `send_tweet()` function to tweet the `output` picture. You can change the text in your `message` code if you want your tweet to say something different:
 
     ```python
-    message = "The All Seeing Pi saw you!"
+    message = "The All-Seeing Pi saw you!"
     with open(output, 'rb') as photo:
         twitter.update_status_with_media(status=message, media=photo)
     ```
 
-1. Now find the code for the GUI where you create the `PushButton` for a new picture, and add another `PushButton` underneath it which will call the `send_tweet()` function when it is pressed:
+1. Now, find the code for the GUI where you create the `PushButton` for a new picture, and add another `PushButton` underneath it which will call the `send_tweet()` function when it is pressed:
 
     ```python
     tweet_pic = PushButton(app, send_tweet, text="Tweet picture")
@@ -364,14 +363,14 @@ If you just want a fun photo booth to take and save pictures, you could stop the
 
     ![Tweet picture button](images/tweet-picture.png)
 
-1. Save and run your program. Test that when you take a picture and press the **Tweet picture** button on the GUI, the picture is tweeted from your twitter account.
+1. Save and run your program. Test that, when you take a picture and press the **Tweet picture** button on the GUI, the picture is tweeted from your Twitter account.
 
     ![Tweeted picture](images/tweet-result.png)
 
 
-The finished code is [here](code/finished_allseeingpi.py) for you to check against yours.
+The finished code is [here](code/finished_allseeingpi.py): you can check it against your code if you need to.
 
-Once you are happy that your All-Seeing Pi works, you may wish to remove the `alpha=128` command from the camera preview to make it fully opaque. You can also make the GUI full screen: locate the line `app = App("The All Seeing Pi", 800, 480)` and, immediately after it, add the line `app.attributes("-fullscreen", True)`.
+Once you are happy that your All-Seeing Pi works, you may wish to remove the `alpha=128` command from the camera preview to make it fully opaque. You can also make the GUI full-screen: locate the line `app = App("The All-Seeing Pi", 800, 480)` and, immediately after it, add the line `app.attributes("-fullscreen", True)`.
 
 ## What next?
 - Can you add a text box or perhaps a touchscreen keyboard to your GUI to allow someone to enter their Twitter handle?
