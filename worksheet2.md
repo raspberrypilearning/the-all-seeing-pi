@@ -8,7 +8,7 @@ With the hardware set up, we can begin to program the software that will make ev
 
     ![File Explorer](images/file-explorer.png)
 
-1. Select **Create new** and then click **Folder**. 
+1. Select **Create New** and then click **Folder**. 
 
     ![Create folder menu](images/create-folder.png)
 
