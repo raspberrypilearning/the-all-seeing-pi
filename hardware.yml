@@ -1,6 +1,6 @@
-- name: Raspberry Pi camera module
+- name: Raspberry Pi Camera Module
   img: camera
-- name: Raspberry Pi touch screen or standard monitor
+- name: Raspberry Pi touchscreen or standard monitor
   img: monitor
 - name: 2 x tactile push buttons
   img: tactile-push-button
