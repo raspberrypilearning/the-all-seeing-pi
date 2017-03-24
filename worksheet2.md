@@ -82,7 +82,7 @@ With the hardware set up, we can begin to program the software that will make ev
   camera.start_preview(alpha=128)
   ```
 
-  This code creates a 'PiCamera' object with the resolution set to 800 × 480, which is the resolution of the Raspberry Pi touchscreen. We also tell the camera to flip the preview horizontally (`hflip`): if we don't do this, the preview image will be mirrored, which makes it hard for people to align themselves with the overlays! We then start the preview with alpha set to `128` so that it is semi-transparent; this is in case we get an error and need to see what is happening underneath. When you are confident that your code works, you can remove the `alpha=128` to make the preview fully opaque.
+    This code creates a 'PiCamera' object with the resolution set to 800 × 480, which is the resolution of the Raspberry Pi touchscreen. We also tell the camera to flip the preview horizontally (`hflip`): if we don't do this, the preview image will be mirrored, which makes it hard for people to align themselves with the overlays! We then start the preview with alpha set to `128` so that it is semi-transparent; this is in case we get an error and need to see what is happening underneath. When you are confident that your code works, you can remove the `alpha=128` to make the preview fully opaque.
 
 
 ## Take a picture when the button is pressed
