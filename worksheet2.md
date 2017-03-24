@@ -363,7 +363,7 @@ If you just want a fun photo booth to take and save pictures, you could stop the
 
     ![Tweet picture button](images/tweet-picture.png)
 
-1. Save and run your program. Test that, when you take a picture and press the **Tweet picture** button on the GUI, the picture is tweeted from your Twitter account.
+1. Save and run your program. Test whether, when you take a picture and press the **Tweet picture** button on the GUI, the picture is tweeted from your Twitter account.
 
     ![Tweeted picture](images/tweet-result.png)
 
