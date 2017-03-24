@@ -93,7 +93,7 @@ This code creates a 'PiCamera' object with the resolution set to 800 × 480, whi
     from time import gmtime, strftime
     ```
 
-1. Underneath your camera set-up code, add the following line:
+1. Underneath the code to set up the camera, add the following line:
 
     ```python
     output = strftime("/home/pi/allseeingpi/image-%d-%m %H:%M.png", gmtime())
