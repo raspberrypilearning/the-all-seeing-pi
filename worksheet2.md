@@ -173,7 +173,7 @@ This code creates a 'PiCamera' object with the resolution set to 800 × 480, whi
 
 1. You will notice that, when you take a picture, two things happen. Firstly, the overlay does not disappear and probably makes it quite difficult to see what you are doing: close the Python shell window to get rid of the overlay. Secondly, people can see a camera preview and can choose a silly hat from the overlays, but, when they take the photograph, the overlay disappears. We need to add code to remove the overlay from the screen once the picture is taken, and superimpose it onto the saved photograph.
 
-## Save overlay on your picture
+## Save an overlay on your picture
 
 1. Locate the function `def take_picture():` and add two lines of code at the end of the function:
 
