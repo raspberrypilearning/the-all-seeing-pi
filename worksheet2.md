@@ -22,7 +22,7 @@ With the hardware set up, we can begin to program the software that will make ev
 
 1. Click on **File > Save** and save your file into the `allseeingpi` folder you just created, with the filename `allseeingpi.py`.
 
-1. We will need the **gpiozero** library. At the start of your Python file, add an import statement:
+1. We will need the `gpiozero` library. At the start of your Python file, add an import statement:
 
     ```python
     from gpiozero import Button
@@ -87,7 +87,7 @@ This code creates a 'PiCamera' object with the resolution set to 800 × 480, whi
 
 ## Take a picture when the button is pressed
 
-1. Since we will probably take lots of pictures with the All-Seeing Pi, we will put the date and time at which the picture was taken within the filename to avoid a picture being overwritten each time a new one is taken. To do this, we will need the **gmtime** and **strftime** functions from the **time** library, so add this line to the other import statements:
+1. Since we will probably take lots of pictures with the All-Seeing Pi, we will put the date and time at which the picture was taken within the filename to avoid a picture being overwritten each time a new one is taken. To do this, we will need the `gmtime` and `strftime` functions from the `time` library, so add this line to the other import statements:
 
     ```python
     from time import gmtime, strftime
@@ -99,7 +99,7 @@ This code creates a 'PiCamera' object with the resolution set to 800 × 480, whi
     output = strftime("/home/pi/allseeingpi/image-%d-%m %H:%M.png", gmtime())
     ```
 
-    This will create a variable called `output` which contains the location and filename of where the captured photo will be saved. The `%d`, `%m` (etc) characters are how we specify the time format: `%d` means the day and `%m` means the month, for example. If you would like the date format in your filename to be different, there is a full [strftime reference guide](https://docs.python.org/2/library/time.html#time.strftime) available. The current date and time is provided by calling the function `gmtime()`.
+    This will create a variable called `output` which contains the location and filename of where the captured photo will be saved. The `%d`, `%m` (etc) characters are how we specify the time format: `%d` means the day and `%m` means the month, for example. If you would like the date format in your filename to be different, there is a full [reference guide](https://docs.python.org/2/library/time.html#time.strftime) to `strftime` available. The current date and time is provided by calling the function `gmtime()`.
 
 1. Now let's revisit the `take_picture()` function and add some new code so that it actually takes a picture instead of just printing a message. Locate the line `def take_picture()`. Delete the line `print("Take a picture")` and in its place, add the following lines, making sure they are indented:
 
