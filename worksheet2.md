@@ -144,7 +144,7 @@ This code creates a 'PiCamera' object with the resolution set to 800 × 480, whi
     overlays = ['rock', 'paper', 'scissors']
     ```
 
-1. Now go back to your `allseeingpi.py` program. Next to the other import statements in your program, add another one to import this file:
+1. Now go back to your `allseeingpi.py` program. Under the other import statements in your program, add another one to import this file:
 
     ```python
     from overlay_functions import *
