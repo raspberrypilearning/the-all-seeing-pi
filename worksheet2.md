@@ -111,7 +111,7 @@ This code creates a 'PiCamera' object with the resolution set to 800 × 480, whi
 
     This code captures a picture, saving it to the location we just defined in the variable `output`. It then stops the camera preview.
 
-1. Press **F5** to run your program, then press the button.
+1. Press **F5** to run your program, then press the button to take a picture.
 
 1. Navigate to the folder `/home/pi/allseeingpi` and check that the picture you just took has saved correctly.
 
