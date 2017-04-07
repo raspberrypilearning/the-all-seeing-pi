@@ -42,7 +42,7 @@ With the hardware set up, we can begin to program the software that will make ev
     take_pic_btn.when_pressed = take_picture
     ```
 
-1. We will write these two functions so that the buttons know what to do when they are pressed. Functions are usually written at the start of a program, immediately after the import statements. Add the functions, but with some placeholder code to just print a message when they are pressed, so we can test them.
+1. We will write these two functions so that the buttons know what to do when they are pressed. Functions are usually written at the start of a program, immediately after the import statements. Add the following two functions immediately after the import statement, with some placeholder code to print a message when they are pressed, so we can test them.
 
     ```python
     def next_overlay():
