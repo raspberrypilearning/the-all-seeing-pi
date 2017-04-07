@@ -12,7 +12,7 @@ With the hardware set up, we can begin to program the software that will make ev
 
     ![Create folder menu](images/create-folder.png)
 
-1. Type in the name of the folder where you will store the code and the photographs. We chose to call ours `allseeingpi`. Make a note of the path to this folder (this is displayed in the bar at the top), which should be `/home/pi/allseeingpi`.
+1. Type in the name of the folder where you will store the code and the photographs. We chose to call ours `allseeingpi`. Double click on the `allseeingpi` folder and make a note of the path to it (this is displayed in the bar at the top), which should be `/home/pi/allseeingpi`.
 
 1. From the **Programming** menu, open up **Python 3**.
 
