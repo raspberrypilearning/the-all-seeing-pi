@@ -1,5 +1,12 @@
-## What next?
-- Can you add a text box or perhaps a touchscreen keyboard to your GUI to allow someone to enter their Twitter handle?
-- Can you use this Twitter handle to add an `@username` mention to the tweet text?
-- Could you make a more imaginative housing for your All-Seeing Pi?
+## Setting up the variables
+
+This part sets up the directory where the overlays are saved, and the names of the various overlays. The overlay variable is initialised with the first value in the list.
+
+```python
+# EDIT THESE VALUES ------------------------
+overlays_dir = "/home/pi/allseeingpi/overlays"
+overlays = ['girl', 'cowboy', 'top', 'pink', 'glassesnose', 'moustache', 'sunglasses', 'elvis', 'emo', 'blackhat', 'emo2', 'baseball', 'flowers', 'santa', 'alps', 'mop', 'glasses']
+# ------------------------------------------
+overlay = overlays[0] # Starting value
+```
 

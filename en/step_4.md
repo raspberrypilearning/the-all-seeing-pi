@@ -1,9 +1,6 @@
-## Making the photo booth housing
-You can create your All-Seeing Pi using any housing you like. Our first iteration used a humble cardboard box, but you might want to create a masterpiece of carpentry or laser-cutting wizardry to hold your All-Seeing Pi.
+## Connecting the Raspberry Pi touchscreen
 
-  ![All-Seeing Pi in a cardboard box](images/asp-cardboard.png)
+- Set up your Raspberry Pi touchscreen. There is a [good tutorial](https://thepihut.com/blogs/raspberry-pi-tutorials/45295044-raspberry-pi-7-touch-screen-assembly-guide) available to help you. Ensure that you power the touchscreen via the Raspberry Pi with jumper leads as shown in the tutorial, and that the power supply you use is a good quality one.
 
-If you don't have fancy buttons or a touchscreen, that's OK too: you can still make the All-Seeing Pi! Here is a picture of the setup we used when creating this resource: the only extra hardware requirements are two tactile push buttons, four jumper leads, a breadboard, and a Camera Module. You can use your usual monitor, keyboard, and mouse.
-
-  ![All Seeing Pi test setup](images/test-setup.png)
+- Situate your screen within the housing of your choice, ensuring you can still access the Raspberry Pi.
 

@@ -1,10 +1,15 @@
-## Importing necessary libraries
+## Pad the overlay
 
-These statements import functions from the `PIL` library to process and save the images and the `itertools` library so that we can cycle through the overlays.
+This function ensures that the overlay is padded correctly so it can be displayed on the preview.
 
 ```python
-  from PIL import Image
-  from itertools import cycle
+def _pad(resolution, width=32, height=16):
+    # Pads the specified resolution
+    # up to the nearest multiple of *width* and *height*; this is
+    # needed because overlays require padding to the camera's
+    # block size (32x16)
+    return (
+        ((resolution[0] + (width - 1)) // width) * width,
+        ((resolution[1] + (height - 1)) // height) * height,
+    )
 ```
-
-

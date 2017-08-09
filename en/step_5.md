@@ -1,6 +1,8 @@
-## Connecting the Raspberry Pi touchscreen
+## Connecting the Camera Module
 
-- Set up your Raspberry Pi touchscreen. There is a [good tutorial](https://thepihut.com/blogs/raspberry-pi-tutorials/45295044-raspberry-pi-7-touch-screen-assembly-guide) available to help you. Ensure that you power the touchscreen via the Raspberry Pi with jumper leads as shown in the tutorial, and that the power supply you use is a good quality one.
+- Connect the Camera Module to the Raspberry Pi with the blue side of the connector facing the USB ports:
 
-- Situate your screen within the housing of your choice, ensuring you can still access the Raspberry Pi.
+  ![Connect the camera](images/connect-camera.png)
+
+- Situate the Camera Module in your chosen housing. If you are using glue to secure it in place, be careful not to get any glue onto the connectors or camera components or they may stop working.
 

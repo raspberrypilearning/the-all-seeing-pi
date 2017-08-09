@@ -16,13 +16,11 @@ site_areas: ''
 steps:
 - title: Introduction
 - title: What you will need
-- title: The All-Seeing Pi
 - title: Making the photo booth housing
 - title: Connecting the Raspberry Pi touchscreen
 - title: Connecting the Camera Module
 - title: Connecting the buttons
 - title: Finishing the setup
-- title: 'The All-Seeing Pi Worksheet 2: Software'
 - title: Test the buttons
 - title: Set up the camera
 - title: Take a picture when the button is pressed
@@ -33,7 +31,6 @@ steps:
 - title: Stop the picture overwriting
 - title: Display the picture
 - title: Tweet picture
-- title: What next?
 - title: The All Seeing Pi (Overlay Functions)
 - title: Importing necessary libraries
 - title: Setting up the variables

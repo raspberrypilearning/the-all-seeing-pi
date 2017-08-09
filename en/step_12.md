@@ -1,30 +1,21 @@
-## Take a picture when the button is pressed
+## Change overlays with a button
 
-- Since we will probably take lots of pictures with the All-Seeing Pi, we will put the date and time at which the picture was taken within the filename to avoid a picture being overwritten each time a new one is taken. To do this, we will need the `gmtime` and `strftime` functions from the `time` library, so add this line to the other import statements:
-
-    ```python
-    from time import gmtime, strftime
-    ```
-
-- Underneath the code to set up the camera, add the following line:
+- The other button you wired up to your All-Seeing Pi (called `next_overlay_btn`) will be the one we use to switch between the various overlays. Locate the function `def next_overlay():` and delete the indented line `print ("Next overlay")`. In its place, add the following code, making sure the lines are indented to show that they are part of the function:
 
     ```python
-    output = strftime("/home/pi/allseeingpi/image-%d-%m %H:%M.png", gmtime())
+    def next_overlay():
+        global overlay
+        overlay = next(all_overlays)
+        preview_overlay(camera, overlay)
     ```
 
-    This will create a variable called `output` which contains the location and filename of where the captured photo will be saved. The `%d`, `%m` (etc) characters are how we specify the time format: `%d` means the day and `%m` means the month, for example. If you would like the date format in your filename to be different, there is a full [reference guide](https://docs.python.org/2/library/time.html#time.strftime) to `strftime` available. The current date and time is provided by calling the function `gmtime()`.
+    First, we have to declare that we want to use the global variable, `overlay`. This means that when we change the overlay, that value is saved so that we can access it and use it from anywhere, and the change isn't lost when we exit this function.
 
-- Now let's revisit the `take_picture()` function and add some new code so that it actually takes a picture instead of just printing a message. Locate the line `def take_picture()`. Delete the line `print("Take a picture")` and in its place, add the following lines, making sure they are indented:
+    The second line gets the next overlay from the list of `all_overlays` (defined within the `overlay_functions.py` file), and sets this as the current `overlay`. Then, the function `preview_overlay()` is called to display the new overlay.
 
-    ```python
-    def take_picture():
-        camera.capture(output)
-        camera.stop_preview()
-    ```
+- Save your program, and run it by pressing **F5**. Check that when you press the button to change between overlays, the overlays change. Ensure you have at least one overlay image in your overlays folder to be able to change between them!
 
-    This code captures a picture, saving it to the location we just defined in the variable `output`. It then stops the camera preview.
+    Here is the [program so far](resources/change_overlays_and_take_picture.py) if you want to check your progress.
 
-- Press **F5** to run your program, then press the button to take a picture.
-
-- Navigate to the folder `/home/pi/allseeingpi` and check that the picture you just took has saved correctly.
+- You will notice that, when you take a picture, two things happen. Firstly, the overlay does not disappear and probably makes it quite difficult to see what you are doing: close the Python shell window to get rid of the overlay. Secondly, people can see a camera preview and can choose a silly hat from the overlays, but, when they take the photograph, the overlay disappears. We need to add code to remove the overlay from the screen once the picture is taken, and superimpose it onto the saved photograph.
 

@@ -1,12 +1,8 @@
-## Remove all overlays
+## Overlays cycle
 
-This function iterates over all overlays attached to the `camera` object, and removes them.
+This code creates a `cycle`. We use the `next()` function on this cycle when the `next_overlay_btn` is pressed in order to receive the next overlay in the list. A cycle is needed because when the end of the list of overlays is reached, we want to automatically begin again with the first overlay.
 
 ```python
-def remove_overlays(camera):
-
-    # Remove all overlays from the camera preview
-    for o in camera.overlays:
-        camera.remove_overlay(o)
+all_overlays = cycle(overlays)
 ```
 

@@ -1,4 +1,11 @@
-## The All Seeing Pi (Overlay Functions)
+## Get the overlay as a PIL Image
 
-This page is for more advanced learners as it explains in detail what the code and functions inside `overlay_functions.py` do. It is possible to make the All Seeing Pi without understanding what these functions do - simply save a copy of the file [overlay_functions.py](resources/overlay_functions.py) into the folder with your code and they will be available.
+This function is only used within other functions in this file. Given the name of an overlay as a string, it creates a PIL Image object of that overlay and returns it.
+
+```python
+def _get_overlay_image(overlay):
+
+    # Open the overlay as an Image object
+    return Image.open(overlays_dir + "/" + overlay + ".png")
+```
 

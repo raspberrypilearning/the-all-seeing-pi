@@ -125,7 +125,7 @@ This code creates a 'PiCamera' object with the resolution set to 800 × 480, whi
 
 1. Create a subfolder called `overlays` within your `allseeingpi` folder, and place your overlay images inside it.
 
-1. Navigate to the [overlays folder](https://github.com/raspberrypilearning/the-all-seeing-pi/tree/master/overlays) of the GitHub repo for this project. Click on the filename of the overlay you would like to use, then right-click on the download link and save the image into the `overlays` folder you just created. Repeat this process until you have saved all of the overlays you would like to use.
+1. Navigate to the [overlays folder](https://github.com/raspberrypilearning/the-all-seeing-pi/tree/master/en/resources) of the GitHub repo for this project. Click on the filename of the overlay you would like to use, then right-click on the download link and save the image into the `overlays` folder you just created. Repeat this process until you have saved all of the overlays you would like to use.
 
 1. Now [right-click here](code/overlay_functions.py) and save this file as `overlay_functions.py`. Make sure you save this file in your `allseeingpi` directory (where the `allseeingpi.py` script is also saved). If you would like to see a full explanation of what these functions do, or you would prefer to write them yourself, head to the [overlay functions explanation page](worksheet3.md) to find out how to do this, then resume the tutorial at the next step.
 

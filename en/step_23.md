@@ -1,12 +1,12 @@
-## Setting up the variables
+## Remove all overlays
 
-This part sets up the directory where the overlays are saved, and the names of the various overlays. The overlay variable is initialised with the first value in the list.
+This function iterates over all overlays attached to the `camera` object, and removes them.
 
 ```python
-# EDIT THESE VALUES ------------------------
-overlays_dir = "/home/pi/allseeingpi/overlays"
-overlays = ['girl', 'cowboy', 'top', 'pink', 'glassesnose', 'moustache', 'sunglasses', 'elvis', 'emo', 'blackhat', 'emo2', 'baseball', 'flowers', 'santa', 'alps', 'mop', 'glasses']
-# ------------------------------------------
-overlay = overlays[0] # Starting value
+def remove_overlays(camera):
+
+    # Remove all overlays from the camera preview
+    for o in camera.overlays:
+        camera.remove_overlay(o)
 ```
 

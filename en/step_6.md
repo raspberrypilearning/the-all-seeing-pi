@@ -1,8 +1,8 @@
-## Connecting the Camera Module
+## Connecting the buttons
 
-- Connect the Camera Module to the Raspberry Pi with the blue side of the connector facing the USB ports:
+- Using jumper leads, wire one button to **GPIO 23** and any ground pin, and the other button to **GPIO 25** and any ground pin.
 
-  ![Connect the camera](images/connect-camera.png)
+- Situate the buttons in your chosen housing. In the software, the button connected to GPIO 23 will select the next overlay, and the button connected to GPIO 25 will take the picture. (Don't worry if you accidentally wire your buttons up the other way around: you can simply swap the pin numbers in the code!)
 
-- Situate the Camera Module in your chosen housing. If you are using glue to secure it in place, be careful not to get any glue onto the connectors or camera components or they may stop working.
+    ![All-Seeing Pi in a laser-cut box](images/asp-lasercut.png)
 

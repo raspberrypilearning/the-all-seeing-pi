@@ -1,46 +1,40 @@
-## Create a GUI
+## Display the picture
 
-We have an almost-working All-Seeing Pi. However, when a picture is taken, the camera preview disappears and the user is left staring at the Python shell and the Raspbian desktop. You probably don't want your selfie-takers to have to restart the Python program every time someone takes a picture. We will create a very simple GUI to display the picture that was taken and allow them to take another picture.
+You probably don't want your photo booth participants to have to go digging through the Raspbian filesystem to see the picture they took either, so let's display the picture they took on the GUI.
 
-- To create the GUI we will use a library called **guizero**, which you should have already installed in the [software installation](software.md) step. Add another import line with the others at the start of your program to bring in the guizero functions we need:
-
-    ```python
-    from guizero import App, PushButton, Text, Picture
-    ```
-
-- At the bottom of your current program, create the beginning of your GUI.
+- Locate the line of code where you intialise the `output` variable:
 
     ```python
-    app = App("The All-Seeing Pi", 800, 480)
-    message = Text(app, "I spotted you!")
-    app.display()
+    output = ""
     ```
 
-    First, we create an **app**, which is the basic container for the GUI. The dimensions are 800 × 480 because that is the resolution of the touchscreen, and the title bar will contain the text "The All-Seeing Pi". It is possible to make the GUI full-screen, but we will not do this for now because it can be difficult for testing. We also create a message, `"I spotted you!"`, and add it to the app before displaying everything.
-
-- Save and run your program again. Check that, when you press the button to take the photo, the camera preview exits and you see a mostly blank GUI with a message saying "I spotted you!".
-
-- Now, between the message line and the `app.display()` line, add another line of code to create a button.
+    Immediately underneath it, add a new line of code to define the location where we will store the `latest-photo`, i.e. the photo most recently taken using the booth.
 
     ```python
-    new_pic = PushButton(app, new_picture, text="New picture")
+    latest_photo = '/home/pi/allseeingpi/latest.gif'
+    ```
+- Now locate the line of code where you added the `PushButton` to your GUI. Immediately **before** that line, insert a line of code to display an image on the GUI:
+
+    ```
+    your_pic = Picture(app, latest_photo)
     ```
 
-    Examining the arguments passed to this `PushButton` object, we have three parts:
-    
-    - `app`: tells the button to add itself to the app
-    - `new_picture`: this is the **command**. When the button is pushed, it will call the function `new_picture()` (which we haven't written yet!)
-    - `text="New picture"`: this is the text which will appear on the button
-
-- Now write the `new_picture` function so that the button knows what to do when it is pressed. Write this code after the `take_picture()` function, but before the code where we set up the buttons. **Ensure that your cursor is not indented**, otherwise the code you write now will become part of the `take_picture()` function, which we do not want.
+- The file we are referring to, `latest.gif`, does not yet exist, so if you run your program now you will not see a photograph displayed on the GUI. We must add code inside the `take_picture()` function to generate this image so that it can be displayed. Locate the `take_picture()` function and, underneath the other code in the function, add the following lines (remembering to ensure that the new lines of code are also indented):
 
     ```python
-    def new_picture():
-        camera.start_preview(alpha=128)
-        preview_overlay(camera, overlay)
+    size = 400, 400
+    gif_img = Image.open(output)
+    gif_img.thumbnail(size, Image.ANTIALIAS)
+    gif_img.save(latest_photo, 'gif')
+
+    your_pic.set(latest_photo)
     ```
 
-    This function is very straightforward: it simply tells the camera to restart the preview, and to display the overlay (which will be the last overlay we used).
+    This code opens the `output` image (the image containing the photo combined with the overlay), creates a smaller thumbnail of that image in **gif** format, and saves it at the location set up in `latest_photo`. It then sets the image on the GUI (`your_pic`) to be that latest photo image using the `set()` function which is part of the guizero library.
 
-- Save your program, and run it using **F5** once again. Check that you can press your physical button to take a picture, and that the GUI displays once the camera preview disappears. Check that you can press the on-screen button to restart the camera preview and take another picture.
+- Save your code and test whether, when you take a photograph, it is displayed on the GUI. You may find that there is a short delay between the camera preview exiting and the image displaying on the GUI while it is saving.
+
+    ![Displaypicture](images/display-picture.png)
+
+    You may notice that the picture quality of the image displayed on screen is not optimal. This is because the picture has been converted to gif format to be displayed on the GUI. The full-quality png version of the photograph will still be saved in the `allseeingpi` folder.
 
