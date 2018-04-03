@@ -1,19 +1,22 @@
 ---
 title: The All-Seeing Pi
 hero_image: images/banner.png
-description: In this resource, you will make a tweeting touchscreen photo booth using
-  a Raspberry Pi.
+description: In this resource, you will make a tweeting touchscreen photo booth using a Raspberry Pi.
 original_url: https://raspberrypi.org/learning/the-all-seeing-pi
 theme: red
 duration: 2
 listed: true
 ingredient: false
 copyedit: true
-curriculum: creator, design-0, programming-0, phys-comp-0, manufacture-0, community-0
+curriculum: 4, design-4, programming-4, phys-comp-4, manufacture-4, community-1
 interests: photography, big-project
-technologies: physical computing, python
-site_areas: ''
-steps:
+technologies: raspberry-pi, electronic-components, python
+site_areas: projects
+hardware: raspberry-pi, electronic-components
+software: python
+version: 3
+last_tested: 2017-01-01
+steps: 
 - title: Introduction
 - title: What you will need
 - title: Making the photo booth housing
@@ -41,5 +44,3 @@ steps:
 - title: Save picture with overlay
 - title: Overlays cycle
 - title: What next?
-
-
