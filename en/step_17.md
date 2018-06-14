@@ -64,7 +64,7 @@ If you just want a fun photo booth to take and save pictures, you could stop the
 
 The finished code is [here](resources/finished_allseeingpi.py): you can check it against your code if you need to.
 
-Once you are happy that your All-Seeing Pi works, you may wish to remove the `alpha=128` command from the camera preview to make it fully opaque. You can also make the GUI full-screen: locate the line `app = App("The All-Seeing Pi", 800, 480)` and, immediately after it, add the line `app.attributes("-fullscreen", True)`.
+Once you are happy that your All-Seeing Pi works, you may wish to remove the `alpha=128` command from the camera preview to make it fully opaque. You can also make the GUI full-screen: locate the line `app = App("The All-Seeing Pi", 800, 480)` and, immediately after it, add the line `app.tk.attributes("-fullscreen", True)`.
 
 ### Other ideas
 - Can you add a text box or perhaps a touchscreen keyboard to your GUI to allow someone to enter their Twitter handle?
