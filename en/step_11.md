@@ -8,7 +8,7 @@
 
 - Create a subfolder called `overlays` within your `allseeingpi` folder, and place your overlay images inside it.
 
-- Navigate to the [overlays folder](https://github.com/raspberrypilearning/the-all-seeing-pi/tree/master/overlays) of the GitHub repo for this project. Click on the filename of the overlay you would like to use, then right-click on the download link and save the image into the `overlays` folder you just created. Repeat this process until you have saved all of the overlays you would like to use.
+- Navigate to the [overlays folder](https://github.com/raspberrypilearning/the-all-seeing-pi/tree/master/en/resources) of the GitHub repo for this project. Click on the filename of the overlay you would like to use, then right-click on the download link and save the image into the `overlays` folder you just created. Repeat this process until you have saved all of the overlays you would like to use.
 
 - Now [right-click here](resources/overlay_functions.py) and save this file as `overlay_functions.py`. Make sure you save this file in your `allseeingpi` directory (where the `allseeingpi.py` script is also saved). 
 
