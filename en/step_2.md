@@ -17,10 +17,8 @@ This resource requires a number of additional software libraries. You will need 
 To install the software you need, run the following commands in a terminal window:
 
 ```bash
-sudo apt-get install -y python3-picamera python3-pip
 sudo pip3 install guizero
 sudo pip3 install twython
-sudo apt-get install -y python3-PIL
 ```
 
 This will install the necessary software to control the Camera Module, create a GUI, and tweet and manipulate images.
