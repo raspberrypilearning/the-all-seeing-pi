@@ -74,7 +74,7 @@ output = ""
 latest_photo = '/home/pi/allseeingpi/latest.gif'
 
 app = App("The All Seeing Pi", 800, 480)
-#app.attributes("-fullscreen", True)
+#app.tk.attributes("-fullscreen", True)
 message = Text(app, "I spotted you!")
 your_pic = Picture(app, latest_photo)
 new_pic = PushButton(app, new_picture, text="New picture")
