@@ -2,7 +2,7 @@
 
 ![](cover.png)
 
-In this resource, you will make a tweeting touchscreen photo booth using a Raspberry Pi.
+In [this resource](https://projects.raspberrypi.org/en/projects/the-all-seeing-pi), you will make a tweeting touchscreen photo booth using a Raspberry Pi.
 
 ## Licence
 
