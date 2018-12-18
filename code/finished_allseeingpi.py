@@ -4,6 +4,7 @@ from overlay_functions import *
 from time import gmtime, strftime
 from guizero import App, PushButton, Text, Picture
 from twython import Twython
+import time
 from auth import (
     consumer_key,
     consumer_secret,
@@ -21,6 +22,7 @@ def next_overlay():
 def take_picture():
     global output
     output = strftime("/home/pi/allseeingpi/image-%d-%m %H:%M.png", gmtime())
+    time.sleep(3) # sleep for 3 seconds so you can be prepared to get a better picture
     camera.capture(output)
     camera.stop_preview()
     remove_overlays(camera)
