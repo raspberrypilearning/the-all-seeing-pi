@@ -1,4 +1,7 @@
 ## What you will make
+
+[[[camera-bullseye]]]
+
 In this resource, you will make a tweeting touchscreen photo booth using a Raspberry Pi.
 
 ## What you will learn
