@@ -9,7 +9,7 @@
 - Underneath the code to set up the camera, add the following line:
 
     ```python
-    output = strftime("/home/pi/allseeingpi/image-%d-%m %H:%M.png", gmtime())
+    output = strftime("/home/username/allseeingpi/image-%d-%m %H:%M.png", gmtime())
     ```
 
     This will create a variable called `output` which contains the location and filename of where the captured photo will be saved. The `%d`, `%m` (etc) characters are how we specify the time format: `%d` means the day and `%m` means the month, for example. If you would like the date format in your filename to be different, there is a full [reference guide](https://docs.python.org/2/library/time.html#time.strftime) to `strftime` available. The current date and time is provided by calling the function `gmtime()`.
@@ -26,5 +26,5 @@
 
 - Press **F5** to run your program, then press the button to take a picture.
 
-- Navigate to the folder `/home/pi/allseeingpi` and check that the picture you just took has saved correctly.
+- Navigate to the folder `/home/username/allseeingpi` and check that the picture you just took has saved correctly.
 
