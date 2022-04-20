@@ -8,7 +8,7 @@
 
     ![Create folder menu](images/create-folder.png)
 
-- Type in the name of the folder where you will store the code and the photographs. We chose to call ours `allseeingpi`. Double click on the `allseeingpi` folder and make a note of the path to it (this is displayed in the bar at the top), which should be `/home/pi/allseeingpi`.
+- Type in the name of the folder where you will store the code and the photographs. We chose to call ours `allseeingpi`. Double click on the `allseeingpi` folder and make a note of the path to it (this is displayed in the bar at the top), which should be `/home/username/allseeingpi`.
 
 - From the **Programming** menu, open up **Python 3**.
 

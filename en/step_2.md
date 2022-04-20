@@ -6,7 +6,7 @@
 * Raspberry Pi touchscreen display or standard monitor
 * 2 x tactile push buttons
 * Breadboard
-* 4 x Male-female jumper leads
+* 4 x pin-to-socket jumper leads
 * 2 x large buttons (optional, to replace tactile push buttons)
 
 ### Software
