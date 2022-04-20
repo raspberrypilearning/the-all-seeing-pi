@@ -4,7 +4,7 @@ If you just want a fun photo booth to take and save pictures, you could stop the
 
 - You will need to set up a Twitter account and create an app for your All-Seeing Pi. Follow steps 1-6 on the [Getting started with the Twitter API](https://projects.raspberrypi.org/en/projects/getting-started-with-the-twitter-api) resource in a separate file, and check that you can successfully send a textual tweet from Python.
 
-- Save a copy of the `auth.py` file containing your Twitter API keys (which you created during the 'Getting started' tutorial) inside your `/home/pi/allseeingpi` folder.
+- Save a copy of the `auth.py` file containing your Twitter API keys (which you created during the 'Getting started' tutorial) inside your `/home/username/allseeingpi` folder.
 
 - Go back to your `allseeingpi.py` file and, after the other import statements, import Twython:
 
