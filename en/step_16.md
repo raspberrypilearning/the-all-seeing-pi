@@ -11,7 +11,7 @@ You probably don't want your photo booth participants to have to go digging thro
     Immediately underneath it, add a new line of code to define the location where we will store the `latest-photo`, i.e. the photo most recently taken using the booth.
 
     ```python
-    latest_photo = '/home/pi/allseeingpi/latest.gif'
+    latest_photo = '/home/username/allseeingpi/latest.gif'
     ```
 - Now locate the line of code where you added the `PushButton` to your GUI. Immediately **before** that line, insert a line of code to display an image on the GUI:
 
