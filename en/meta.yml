@@ -6,7 +6,7 @@ description: In this resource, you will make a tweeting touchscreen photo booth 
 original_url: https://raspberrypi.org/learning/the-all-seeing-pi
 theme: red
 duration: 3
-listed: true
+listed: false
 ingredient: false
 copyedit: true
 curriculum: 4, design-4, programming-4, phys-comp-4, manufacture-4, community-1
